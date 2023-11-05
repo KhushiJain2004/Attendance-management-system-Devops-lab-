@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Information</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 380px;
+            height: 400px; /* Increase the height of the box */
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .add-button {
+            position: absolute;
+            bottom: 40px; /* Move the button down by changing the value */
+            right: 15px;
+            background-color: #0074D9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Course</h1>
+
+        <div>
+            <h2>Add New Course</h2>
+            <label for="courseName">Course Name:</label>
+            <input type="text" id="courseName" name="courseName">
+        </div>
+
+        <div>
+            <h2>Teacher Assigned</h2>
+            <label for="teacherName">Teacher Name:</label>
+            <input type="text" id="teacherName" name="teacherName">
+        </div>
+
+        <div>
+            <h2>Student Capacity</h2>
+            <label for="capacity">Capacity:</label>
+            <input type="number" id="capacity" name="capacity">
+        </div>
+
+        <button class="add-button">Add</button>
+    </div>
+</body>
+</html>
