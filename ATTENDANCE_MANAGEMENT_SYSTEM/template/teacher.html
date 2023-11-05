@@ -11,34 +11,45 @@
 </head>
 
 <style>
-    /* body {
+    .content-container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
-    } */
+    } 
 
     .box {
-        text-align: left;
+        text-align: center;
         padding: 20px;
-        border: 1px solid #ccc;
+        border: 2px solid #ccc;
         width: 380px;
-        height: 400px; /* Increase the height of the box */
+        height: 450px;/* Increase the height of the box */
         border-radius: 15px;
         position: relative;
     }
 
     .add-button {
         position: absolute;
-        bottom: 40px; /* Move the button down by changing the value */
-        right: 15px;
+        bottom:25px;/* Move the button down by changing the value */
+        left: 50%;
+        transform: translateX(-50%);
         background-color: #0074D9;
         color: white;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+    }
+    .box h1{
+        padding-bottom: 10px;
+    }
+    .box h2{
+        padding-bottom: 12px;
+        padding-top: 12px;
+    }
+    .box label,input{
+        padding: 3px 10px;
     }
 </style>
 
@@ -84,24 +95,24 @@
         <h1>Teacher</h1>
 
         <div>
-            <h2>Add New Teacher:</h2>
+            <h2>Add New Teacher: </h2>
             <label for="courseName">Teacher Name:</label>
             <input type="text" id="courseName" name="courseName">
         </div>
 
         <div>
-            <h2>Id:</h2>
-            <label for="teacherName">Enter Id:</label>
+            <h2>Id: </h2>
+            <label for="teacherName"> Enter Id:</label>
             <input type="text" id="teacherName" name="teacherName">
         </div>
 
         <div>
-            <h2>Password:</h2>
-            <label for="capacity">Enter passowrd:</label>
+            <h2>Password</h2>
+            <label for="capacity">Enter password:</label>
             <input type="number" id="capacity" name="capacity">
         </div>
 
-        <button class="add-button">Add</button>
+        <div><button class="add-button">Add</button></div>
     </div>
     </div>
 </body>
