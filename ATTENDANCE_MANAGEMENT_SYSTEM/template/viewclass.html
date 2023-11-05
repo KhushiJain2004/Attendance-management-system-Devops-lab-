@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view </title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: lightsteelblue;
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        table#class-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table#class-table th, table#class-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table#class-table th {
+            background-color: #333;
+            color: white;
+        }
+
+        table#class-table td:last-child {
+            text-align: center;
+        }
+
+        table#class-table a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        table#class-table a:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Available Classes</h1>
+    </header>
+    <main>
+        <table id="class-table">
+            <thead>
+                <tr>
+                    <th>Class Name</th>
+                    <th>Faculty Assigned</th>
+                    <th>No. of Students</th>
+                    <th>Modify</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Class 101</td>
+                    <td>Abc</td>
+                    <td>25</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+                <tr>
+                    <td>Class 102</td>
+                    <td>Xyz</td>
+                    <td>30</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+                <tr>
+                    <td>Class 103</td>
+                    <td>Abc</td>
+                    <td>20</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+                <tr>
+                    <td>Class 104</td>
+                    <td>Abc</td>
+                    <td>28</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+                <tr>
+                    <td>Class 105</td>
+                    <td>Abc</td>
+                    <td>30</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
+
+
