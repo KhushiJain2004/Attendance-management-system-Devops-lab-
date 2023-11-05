@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Teacher Dashboard</title>
+  <link href="teacher_mgmt.css" rel="stylesheet" type="text/css" />
+  <style>
+    /* Your existing CSS styles here */
+
+    /* New styles for buttons */
+    .btn {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+      text-align: center;
+    }
+
+    .remove-btn {
+      background-color: #e74c3c;
+    }
+
+    .remove-btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="teacher-info">
+      <h2>Teacher's Name</h2>
+    </div>
+
+    <a class="btn" href="#">Add a New Batch</a>
+    <h1></h1>
+
+    <div class="batches-list">
+      <h3>Batches Assigned</h3>
+      <ul>
+        <li>
+          <span>Batch 1 - Subject 1</span>
+          <a class="remove-btn btn" href="#">Remove</a>
+        </li>
+        <li>
+          <span>Batch 2 - Subject 2</span>
+          <a class="remove-btn btn" href="#">Remove</a>
+        </li>
+        <li>
+          <span>Batch 3 - Subject 3</span>
+          <a class="remove-btn btn" href="#">Remove</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+
+</html>
