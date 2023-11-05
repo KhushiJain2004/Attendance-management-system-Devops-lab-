@@ -1,40 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Information</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
 
-        .box {
-            text-align: left;
-            padding: 20px;
-            border: 1px solid #ccc;
-            width: 380px;
-            height: 400px; /* Increase the height of the box */
-            border-radius: 15px;
-            position: relative;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        .add-button {
-            position: absolute;
-            bottom: 40px; /* Move the button down by changing the value */
-            right: 15px;
-            background-color: #0074D9;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="admindashboard.css">
 </head>
+
+<style>
+    /* body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    } */
+
+    .box {
+        text-align: left;
+        padding: 20px;
+        border: 1px solid #ccc;
+        width: 380px;
+        height: 400px; /* Increase the height of the box */
+        border-radius: 15px;
+        position: relative;
+    }
+
+    .add-button {
+        position: absolute;
+        bottom: 40px; /* Move the button down by changing the value */
+        right: 15px;
+        background-color: #0074D9;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
 <body>
+    
+    <header>
+        <h1><i class="fas fa-university"></i>Attendance Management System</h1>
+        <h2>Welcome Admin</h2>
+        <a href="" class=""btn>LogOut</a>
+    </header>
+
+    <aside>
+        <header>
+            <div>
+                <i class="fas fa-bars"></i>Dashboard
+            </div>
+        </header>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard"></i>Manage Classes</h4></li>
+            <ul>
+                <li><a href="courseadd.html"><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href="viewclass.html"><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard-teacher"></i>Manage Faculty</h4></li>
+            <ul>
+                <li><a href=""><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href=""><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><h4><i class="fas fa-book-reader" aria-hidden="true"></i>Manage Students</h4></li>
+            <ul>
+                <li><a href=""><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href=""><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+    </aside>
+    
+    <div class="content-container">
     <div class="box">
         <h1>Course</h1>
 
@@ -57,6 +102,7 @@
         </div>
 
         <button class="add-button">Add</button>
+    </div>
     </div>
 </body>
 </html>
