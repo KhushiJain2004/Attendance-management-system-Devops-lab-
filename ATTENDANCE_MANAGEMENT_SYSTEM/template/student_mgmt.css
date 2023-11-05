@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #fff;
+    margin: 10px; /* Adjusted margin */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.container:hover h1 {
+    color: #ff5733; /* Change color on hover */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    transform: translateY(0); /* Adjusted translateY */
+    opacity: 1; /* Adjusted opacity */
+    transition: transform 0.5s, opacity 1s;
+    -webkit-transition: transform 0.5s, opacity 1s;
+    -moz-transition: transform 0.5s, opacity 1s;
+    -ms-transition: transform 0.5s, opacity 1s;
+    -o-transition: transform 0.5s, opacity 1s;
+    -webkit-transform: translateY(0); /* Adjusted translateY */
+    -moz-transform: translateY(0); /* Adjusted translateY */
+    -ms-transform: translateY(0); /* Adjusted translateY */
+    -o-transform: translateY(0); /* Adjusted translateY */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.percentage {
+    transition: width 1s, color 0.5s;
+}
+
+.percentage:hover {
+    width: 150px; /* Increase width on hover */
+    color: #27ae60; /* Change color on hover */
+}
+
+/* Enhance the Add Subject and Remove Subject buttons */
+button {
+    background-color: #3498db; /* Blue color for Add Subject */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 9px;
+    transition: background-color 0.4s;
+}
+
+button:hover {
+    background-color: #2980b9; /* Darker blue on hover for Add Subject */
+}
+
