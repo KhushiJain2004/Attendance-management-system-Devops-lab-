@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="class2.css">
+</head>
+<body>
+    <header>
+        <h1>Class Name</h1>
+        <div class="teacher-name">
+            <label for="teacherName">Teacher's Name:</label>
+            <input type="text" id="teacherName" value="Harry">
+            <div class="edit-button">
+            <button>Edit</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="add-student">
+            <button onclick="location.href='add-student.html'">Add Student</button>
+        </div>
+        <table>
+            <tr>
+                <th>Student Name</th>
+                <th>Remove</th>
+            </tr>
+            <tr>
+                <td>Student 1</td>
+                <td><button class="remove-button">Remove</button></td>
+            </tr>
+            <tr>
+                <td>Student 2</td>
+                <td><button class="remove-button">Remove</button></td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </table>
+    </main>
+</body>
+</html>
