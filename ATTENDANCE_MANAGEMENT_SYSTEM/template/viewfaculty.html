@@ -102,23 +102,21 @@
             <table id="faculty-table">
                 <thead>
                     <tr>
+                        <th>Faculty ID</th>
                         <th>Faculty Name</th>
+                        <th>Email ID</th>
                         <th>Edit</th>
-                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Faculty Name 1</td>
-                        <td><a href="#">Edit</a></td>
-                        <td><a href="#">Remove</a></td>
-                    </tr>
-                    <tr>
-                        <td>Faculty Name 2</td>
-                        <td><a href="#">Edit</a></td>
-                        <td><a href="#">Remove</a></td>
-                    </tr>
-                    <!-- Add more rows as needed -->
+                    {% for q in teacher_list %}
+						  <tr>
+							<td>{{q.teacher_id}}</td>
+							<td>{{q.teacher_name}}</td>
+							<td>{{q.email_id}}</td>
+							<td><a href="/teacher_mgmt/?teacher_id={{ q.teacher_id }}">Edit</a></td>
+						  </tr>
+						  {% endfor %}
                 </tbody>
             </table>
         </main>
