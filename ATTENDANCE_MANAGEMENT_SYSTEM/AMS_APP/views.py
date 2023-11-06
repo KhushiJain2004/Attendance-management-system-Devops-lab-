@@ -67,14 +67,21 @@ def TeacherLogin(request):
 #     return render(request,'login.html')                       #change login.html
     
 def addnewstudent(request):
-    if request.method == 'POST':
-        student_name = request.POST.get('student')
-        student_id = request.POST.get('studentName')
-        password = request.POST.get('password')
+    if request.user.is_anonymous:
+        return redirect("/")
+    if request.method=='POST':
 
-        return HttpResponse('Student added successfully')
-    else:
-        return render(request, 'addnewstudent.html')
+        student_id='S'+str(len(Student.objects.all())+10000)
+        student_name=request.POST.get('student_name')
+        email_id=request.POST.get('emailid')
+        password=request.POST.get('password')
+        student=Student(student_id=student_id,student_name=student_name,email_id=email_id,password=password)
+        student.save()
+
+        user = User.objects.create_user(username=student_id, email=email_id, first_name=student_name, last_name='Student', password=password)
+        user.save()
+        messages.success(request, f'New teacher {student_name} with ID {student_id} is added' ,extra_tags='posted')
+    return render(request, 'addnewstudent.html')
 
 
 def AdminDashboard(request):
