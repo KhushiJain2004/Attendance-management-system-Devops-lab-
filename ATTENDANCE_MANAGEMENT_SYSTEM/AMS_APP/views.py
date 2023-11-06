@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 def AdminLogin(request):
     if not request.user.is_anonymous:
@@ -78,30 +78,34 @@ def AdminDashboard(request):
     return render(request, 'AdminDashboard.html')
 
 def class_mgmt(request):
-    return render(request, 'class_mgmt.html', context)
+    return render(request, 'class_mgmt.html')
 
 def courseadd(request):
-    return render(request, 'courseadd.html', context)
+    return render(request, 'courseadd.html')
 
 def index(request):
     return render(request, 'index.html')
 
 def student_mgmt(request):
-    return render(request, 'student_mgmt.html', context)
+    return render(request, 'student_mgmt.html')
 
 def teacher_mgmt(request):
-    return render(request, 'teacher_mgmt.html', context)
+    return render(request, 'teacher_mgmt.html')
 
 def teacher(request):
-    return render(request, 'teacher.html', context)
+    return render(request, 'teacher.html')
 
 def viewclass(request):
-    return render(request, 'viewclass.html', context)
+    return render(request, 'viewclass.html')
 
 def viewfaculty(request):
-    return render(request, 'viewfaculty.html', context)
+    return render(request, 'viewfaculty.html')
 
 def viewstudent(request):
-    return render(request, 'viewstudent.html', context)
+    return render(request, 'viewstudent.html')
+
+def logoutuser(request):
+    logout(request)
+    return redirect('/')
 
 

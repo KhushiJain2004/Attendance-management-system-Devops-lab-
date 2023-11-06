@@ -19,5 +19,6 @@ urlpatterns = [
     path('viewclass', views.viewclass, name='viewclass'),
     path('viewfaculty', views.viewfaculty, name='viewfaculty'),
     path('viewstudent', views.viewstudent, name='viewstudent'),
+    path('logoutuser', views.logoutuser, name='logoutuser'),
 ]
 

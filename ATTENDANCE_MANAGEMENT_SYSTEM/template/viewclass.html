@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="admindashboard.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admindashboard.css'%}">
 </head>
 
 <style>
@@ -64,7 +65,7 @@
     <header>
         <h1><i class="fas fa-university"></i>Attendance Management System</h1>
         <h2>Welcome Admin</h2>
-        <a href="" class=""btn>LogOut</a>
+        <a href="/logoutuser" class="btn">LogOut</a>
     </header>
 
     <aside>
@@ -76,22 +77,22 @@
         <ul>
             <li><h4><i class="fas fa-chalkboard"></i>Manage Classes</h4></li>
             <ul>
-                <li><a href="courseadd.html"><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
-                <li><a href="viewclass.html"><i class="fa fa-link"></i>View all</a></li>
+                <li><a href="/courseadd"><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href="/viewclass"><i class="fa fa-link"></i>View all</a></li>
             </ul>
         </ul>
         <ul>
             <li><h4><i class="fas fa-chalkboard-teacher"></i>Manage Faculty</h4></li>
             <ul>
-                <li><a href=""><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
-                <li><a href=""><i class="fa fa-link"></i>View all</a></li>
+                <li><a href="/teacher"><i class="fa fa-pencil fa-fw"></i>Add New Faculty</a></li>
+                <li><a href="/viewfaculty"><i class="fa fa-link"></i>View all</a></li>
             </ul>
         </ul>
         <ul>
             <li><h4><i class="fas fa-book-reader" aria-hidden="true"></i>Manage Students</h4></li>
             <ul>
-                <li><a href=""><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
-                <li><a href=""><i class="fa fa-link"></i>View all</a></li>
+                <li><a href="/addnewstudent"><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href="/viewstudent"><i class="fa fa-link"></i>View all</a></li>
             </ul>
         </ul>
     </aside>
