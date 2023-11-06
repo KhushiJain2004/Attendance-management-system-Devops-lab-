@@ -132,7 +132,11 @@ def teacher(request):
     return render(request, 'teacher.html')
 
 def viewclass(request):
-    return render(request, 'viewclass.html')
+    if request.user.is_anonymous:
+        return redirect("/")
+    subject_list=(Subject.objects.all())
+    return render(request, 'viewclass.html',
+                  {'subject_list':subject_list})
 
 def viewfaculty(request):
     return render(request, 'viewfaculty.html')
