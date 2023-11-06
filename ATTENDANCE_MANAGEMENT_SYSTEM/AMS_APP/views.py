@@ -91,6 +91,18 @@ def class_mgmt(request):
     return render(request, 'class_mgmt.html')
 
 def courseadd(request):
+    if request.user.is_anonymous:
+        return redirect("/")
+    if request.method=='POST':
+
+        subject_id='C'+str(len(Subject.objects.all())+10000)
+        subject_name=request.POST.get('courseName')
+        teacher_id=request.POST.get('teacherid')
+        subject=Subject(subject_id=subject_id,subject_name=subject_name,teacher_id=teacher_id,classes_held=0)
+        subject.save()
+
+        
+        messages.success(request, f'New Subject {subject_name} with teacher {teacher_id} is added' ,extra_tags='posted')
     return render(request, 'courseadd.html')
 
 def index(request):
