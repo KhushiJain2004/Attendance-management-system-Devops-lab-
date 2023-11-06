@@ -6,8 +6,7 @@ from AMS_APP import views
 urlpatterns = [
     path('AdminLogin', views.AdminLogin, name='Admin_Login'),
     path('StudentLogin', views.StudentLogin, name='Student_Login'),
-    path('TeacherLogin', views.TeacherLogin, name='Teacher_Login'),
-    path('login', views.loginuser, name='login'),
+    path('TeacherLogin', views.TeacherLogin, name='Teacher_Login'),\
     path('addnewstudent', views.addnewstudent, name='addnewstudent'),
     path('AdminDashboard', views.AdminDashboard, name='AdminDashboard'),
     path('class_mgmt', views.class_mgmt, name='class_mgmt'),

@@ -90,21 +90,34 @@
             </ul>
         </ul>
     </aside>
-    
+    {% if messages %}
+				  {% for message in messages %}
+                  {%if "posted" in message.tags %}
+				  <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+					{{ message }}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				  </div>
+                  {% endif %}
+				  {% endfor %}
+				  {% endif %}
     <div class="content-container">
     <div class="box">
         <h1>Teacher</h1>
 
         <div>
             <h2>Add New Teacher: </h2>
+            <form method="post" action="/teacher">
+                {% csrf_token %}
             <label for="courseName">Teacher Name:</label>
             <input type="text" id="teachername" name="teacherName">
         </div>
 
         <div>
             <h2>Id: </h2>
-            <label for="teacherName"> Enter Id:</label>
-            <input type="alphanumeric" id="id" name="id">
+            <label for="teacherName"> Enter Email Id:</label>
+            <input type="email" id="email" name="emailid">
         </div>
 
         <div>
@@ -113,7 +126,8 @@
             <input type="alphanumeric" id="password" name="password">
         </div>
 
-        <div><button class="add-button">Add</button></div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+						</form>
     </div>
     </div>
 </body>

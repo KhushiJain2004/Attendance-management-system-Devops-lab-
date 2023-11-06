@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from AMS_APP.models import Teacher,Student,Subject
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 def AdminLogin(request):
     if not request.user.is_anonymous:
@@ -47,21 +50,21 @@ def TeacherLogin(request):
 
     return render(request, 'TeacherLogin.html')
 
-def loginuser(request):
-    if not request.user.is_anonymous:
-            return redirect('/')
-    if request.method=="POST":
-        username=request.POST.get('ID')
-        password=request.POST.get('password')
-        user = authenticate(username=username, password=password)
+# def loginuser(request):
+#     if not request.user.is_anonymous:
+#             return redirect('/')
+#     if request.method=="POST":
+#         username=request.POST.get('ID')
+#         password=request.POST.get('password')
+#         user = authenticate(username=username, password=password)
         
-        if user is not None:
-            login(request,user)
-            return redirect('/admindashboard')              #change dashboard according to where it is coming from
-        else:
-            messages.error(request, 'Wrong username or password')
-            return render(request,'login.html')               #change login.html
-    return render(request,'login.html')                       #change login.html
+#         if user is not None:
+#             login(request,user)
+#             return redirect('/admindashboard')              #change dashboard according to where it is coming from
+#         else:
+#             messages.error(request, 'Wrong username or password')
+#             return render(request,'login.html')               #change login.html
+#     return render(request,'login.html')                       #change login.html
     
 def addnewstudent(request):
     if request.method == 'POST':
@@ -93,6 +96,20 @@ def teacher_mgmt(request):
     return render(request, 'teacher_mgmt.html')
 
 def teacher(request):
+    if request.user.is_anonymous:
+        return redirect("/")
+    if request.method=='POST':
+
+        teacher_id='T'+str(len(Teacher.objects.all())+10000)
+        teacher_name=request.POST.get('teacherName')
+        email_id=request.POST.get('emailid')
+        password=request.POST.get('password')
+        teacher=Teacher(teacher_id=teacher_id,teacher_name=teacher_name,email_id=email_id,password=password)
+        teacher.save()
+
+        user = User.objects.create_user(username=teacher_id, email=email_id, first_name=teacher_name, last_name='Teacher', password=password)
+        user.save()
+        messages.success(request, f'New teacher {teacher_name} with ID {teacher_id} is added' ,extra_tags='posted')
     return render(request, 'teacher.html')
 
 def viewclass(request):
