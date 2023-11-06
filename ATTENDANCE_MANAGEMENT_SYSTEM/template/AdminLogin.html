@@ -104,6 +104,8 @@
         <button class="btn-logout">Logout</button>
     </div>
     <div class="login-container">
+        <form method="post" action="/AdminLogin">
+            {% csrf_token %}    
         <h2>ADMIN LOGIN</h2>
         <div class="form-group">
             <!-- <label for="role">Select Role:</label>
@@ -122,7 +124,7 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button class="btn-login">Login</button>
+        <button class="btn-login" type="submit" value="Submit">Login</button>
     </div>
 </body>
 

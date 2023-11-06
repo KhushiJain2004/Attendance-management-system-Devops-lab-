@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
 def AdminLogin(request):
+    if not request.user.is_anonymous:
+        return redirect("/AdminDashboard")
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -9,25 +11,30 @@ def AdminLogin(request):
 
         if user is not None:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('AdminDashboard')
         return render(request, 'AdminLogin.html', {'error_message': 'Invalid credentials'})
 
     return render(request, 'AdminLogin.html')
 
-def Studentlogin(request):
+def StudentLogin(request):
+    if not request.user.is_anonymous:
+        return redirect("/")
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
+        print('hi')
 
         if user is not None:
             login(request, user)
-            return redirect('student_dashboard')
+            return redirect('')
         return render(request, 'Studentlogin.html', {'error_message': 'Invalid credentials'})
 
     return render(request, 'Studentlogin.html')
 
 def TeacherLogin(request):
+    if not request.user.is_anonymous:
+        return redirect("/")
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -68,7 +75,7 @@ def addnewstudent(request):
 
 
 def AdminDashboard(request):
-    return render(request, 'AdminDashboard.html', context)
+    return render(request, 'AdminDashboard.html')
 
 def class_mgmt(request):
     return render(request, 'class_mgmt.html', context)
@@ -77,7 +84,7 @@ def courseadd(request):
     return render(request, 'courseadd.html', context)
 
 def index(request):
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 def student_mgmt(request):
     return render(request, 'student_mgmt.html', context)
