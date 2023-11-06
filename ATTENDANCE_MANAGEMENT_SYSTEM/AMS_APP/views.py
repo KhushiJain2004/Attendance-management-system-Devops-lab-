@@ -80,7 +80,7 @@ def addnewstudent(request):
 
         user = User.objects.create_user(username=student_id, email=email_id, first_name=student_name, last_name='Student', password=password)
         user.save()
-        messages.success(request, f'New teacher {student_name} with ID {student_id} is added' ,extra_tags='posted')
+        messages.success(request, f'New Student {student_name} with ID {student_id} is added' ,extra_tags='posted')
     return render(request, 'addnewstudent.html')
 
 
@@ -132,13 +132,25 @@ def teacher(request):
     return render(request, 'teacher.html')
 
 def viewclass(request):
-    return render(request, 'viewclass.html')
+    if request.user.is_anonymous:
+        return redirect("/")
+    subject_list=(Subject.objects.all())
+    return render(request, 'viewclass.html',
+                  {'subject_list':subject_list})
 
 def viewfaculty(request):
-    return render(request, 'viewfaculty.html')
+    if request.user.is_anonymous:
+        return redirect("/")
+    teacher_list=(Teacher.objects.all())
+    return render(request, 'viewfaculty.html',
+                  {'teacher_list':teacher_list})
 
 def viewstudent(request):
-    return render(request, 'viewstudent.html')
+    if request.user.is_anonymous:
+        return redirect("/")
+    student_list=(Student.objects.all())
+    return render(request, 'viewstudent.html',
+                  {'student_list':student_list})
 
 def logoutuser(request):
     logout(request)

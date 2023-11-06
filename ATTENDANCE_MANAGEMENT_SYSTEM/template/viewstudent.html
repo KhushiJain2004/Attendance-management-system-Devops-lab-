@@ -102,23 +102,23 @@
             <table id="student-table">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Name</th>
+                        <th>Email</th>
                         <th>Class</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Student Name 1</td>
-                        <td>Class A</td>
-                        <td><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td>Student Name 2</td>
-                        <td>Class B</td>
-                        <td><a href="#">Edit</a></td>
-                    </tr>
-                    <!-- Add more rows as needed -->
+                    {% for q in student_list %}
+						  <tr>
+							<td>{{q.student_id}}</td>
+							<td>{{q.student_name}}</td>
+							<td>{{q.email_id}}</td>
+                            <td>None</td>
+							<td><a href="/student_mgmt/?student_id={{ q.student_id }}">Edit</a></td>
+						  </tr>
+						  {% endfor %}
                 </tbody>
             </table>
         </main>

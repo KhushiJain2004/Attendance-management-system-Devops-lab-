@@ -106,6 +106,7 @@
         <table id="class-table">
             <thead>
                 <tr>
+                    <th>Class ID</th>
                     <th>Class Name</th>
                     <th>Faculty Assigned</th>
                     <th>No. of Students</th>
@@ -113,37 +114,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Class 101</td>
-                    <td>Abc</td>
-                    <td>25</td>
-                    <td><a href="#">Edit</a></td>
-                </tr>
-                <tr>
-                    <td>Class 102</td>
-                    <td>Xyz</td>
-                    <td>30</td>
-                    <td><a href="#">Edit</a></td>
-                </tr>
-                <tr>
-                    <td>Class 103</td>
-                    <td>Abc</td>
-                    <td>20</td>
-                    <td><a href="#">Edit</a></td>
-                </tr>
-                <tr>
-                    <td>Class 104</td>
-                    <td>Abc</td>
-                    <td>28</td>
-                    <td><a href="#">Edit</a></td>
-                </tr>
-                <tr>
-                    <td>Class 105</td>
-                    <td>Abc</td>
-                    <td>30</td>
-                    <td><a href="#">Edit</a></td>
-                </tr>
-                <!-- Add more rows as needed -->
+                {% for q in subject_list %}
+						  <tr>
+							<td>{{q.subject_id}}</td>
+							<td>{{q.subject_name}}</td>
+							<td>{{q.teacher_id}}</td>
+                            <td>0</td>
+							<td><a href="/class_mgmt/?subject_id={{ q.subject_id }}">Edit</a></td>
+						  </tr>
+						  {% endfor %}
+                
+                    
             </tbody>
         </table>
     </main>
