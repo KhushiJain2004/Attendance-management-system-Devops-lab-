@@ -9,33 +9,41 @@
 </head>
 <body>
     <header>
-        <h1>Class Name</h1>
+        <h1>Class ID : {{ class_id}}</h1>
+        <h1>Class Name : {{ class_name}}</h1>
         <div class="teacher-name">
-            <label for="teacherName">Teacher's Name:</label>
-            <input type="text" id="teacherName" value="Harry">
-            <div class="edit-button">
-            <button>Edit</button>
-            </div>
+            <label for="teacherName">Teacher's ID : {{ teacher_id }}      T</label>
+            <label for="teacherName">eacher's Name : {{ teacher_name }}</label>
         </div>
     </header>
     <main>
         <div class="add-student">
-            <button onclick="location.href='add-student.html'">Add Student</button>
+            <form method="post" action="/class_mgmt/?subject_id={{ class_id }}">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Student ID</label>
+                        <input type="text" class="form-control" id="student_id" name="student_id" placeholder="SXXXXXXXX">
+                    </div>
+                    
+                    <button class="btn btn-primary" type="submit">Add Student</button>
+                </form>
         </div>
         <table>
             <tr>
+                <th>Student ID</th>
                 <th>Student Name</th>
-                <th>Remove</th>
+                <th>Student Attendance</th>
+                <!-- <th>Remove</th> -->
             </tr>
-            <tr>
-                <td>Student 1</td>
-                <td><button class="remove-button">Remove</button></td>
-            </tr>
-            <tr>
-                <td>Student 2</td>
-                <td><button class="remove-button">Remove</button></td>
-            </tr>
-            <!-- Add more rows as needed -->
+            {% for q in student_list %}
+						  <tr>
+							<td>{{q.student_id}}</td>
+							<td>{{q.student_name}}</td>
+							<td>{{q.student_attendance}}</td>
+							<!-- <td><a href="/remove/?subject_id={{ q.subject_id }}">Edit</a></td> -->
+						  </tr>
+						  {% endfor %}
+            
         </table>
     </main>
 </body>
