@@ -88,7 +88,52 @@ def AdminDashboard(request):
     return render(request, 'AdminDashboard.html')
 
 def class_mgmt(request):
-    return render(request, 'class_mgmt.html')
+    subject_id = request.GET.get('subject_id')
+    
+    if request.method=='POST':
+        classes_held=Subject.objects.filter(subject_id=subject_id)[0].classes_held
+        student_id=request.POST.get('student_id')
+        student=Student.objects.filter(student_id=student_id)
+        if student[0].class1=='':
+            student.update(class1=subject_id)
+            student.update(class1_att=classes_held*'-')
+        elif student[0].class2=='':
+            student.update(class2=subject_id)
+            student.update(class2_att=classes_held*'-')
+        elif student[0].class3=='':
+            student.update(class3=subject_id)
+            student.update(class3_att=classes_held*'-')
+        elif student[0].class4=='':
+            student.update(class4=subject_id)
+            student.update(class4_att=classes_held*'-')
+        elif student[0].class5=='':
+            student.update(class5=subject_id)
+            student.update(class5_att=classes_held*'-')
+        elif student[0].class6=='':
+            student.update(class6=subject_id)
+            student.update(class6_att=classes_held*'-')
+        elif student[0].class7=='':
+            student.update(class7=subject_id)
+            student.update(class7_att=classes_held*'-')
+        else:
+            student.update(class8=subject_id)
+            student.update(class8_att=classes_held*'-')
+
+        numofstudents=int(Subject.objects.filter(subject_id=subject_id)[0].number_of_students)+1
+        print(numofstudents)
+        Subject.objects.filter(subject_id=subject_id).update(number_of_students=numofstudents)
+    
+    
+    
+    
+    classs=list(Subject.objects.filter(subject_id=subject_id))[0]
+    class_name=classs.subject_name
+    teacher_id=classs.teacher_id
+    teacher_name=Teacher.objects.filter(teacher_id=teacher_id)[0].teacher_name
+    student_list=list(Student.objects.filter(class1=subject_id))+list(Student.objects.filter(class2=subject_id))+list(Student.objects.filter(class3=subject_id))+list(Student.objects.filter(class4=subject_id))+list(Student.objects.filter(class5=subject_id))+list(Student.objects.filter(class6=subject_id))+list(Student.objects.filter(class7=subject_id))+list(Student.objects.filter(class8=subject_id))
+    
+    dic={'class_id':subject_id,'student_list':student_list,'class_name':class_name,'teacher_id':teacher_id,'teacher_name':teacher_name}
+    return render(request, 'class_mgmt.html',dic)
 
 def courseadd(request):
     if request.user.is_anonymous:
@@ -98,7 +143,7 @@ def courseadd(request):
         subject_id='C'+str(len(Subject.objects.all())+10000)
         subject_name=request.POST.get('courseName')
         teacher_id=request.POST.get('teacherid')
-        subject=Subject(subject_id=subject_id,subject_name=subject_name,teacher_id=teacher_id,classes_held=0)
+        subject=Subject(subject_id=subject_id,subject_name=subject_name,teacher_id=teacher_id,classes_held=0,number_of_students=0)
         subject.save()
 
         
