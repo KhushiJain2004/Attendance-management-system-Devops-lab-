@@ -157,7 +157,13 @@ def student_mgmt(request):
     return render(request, 'student_mgmt.html')
 
 def teacher_mgmt(request):
-    return render(request, 'teacher_mgmt.html')
+    teacher_id = request.GET.get('teacher_id')
+    print(teacher_id)
+    teacher_name=Teacher.objects.filter(teacher_id=teacher_id)[0].teacher_name
+    class_list=list(Subject.objects.filter(teacher_id=teacher_id))
+
+    dic={'teacher_name':teacher_name,'class_list':class_list}
+    return render(request, 'teacher_mgmt.html',dic)
 
 def teacher(request):
     if request.user.is_anonymous:
