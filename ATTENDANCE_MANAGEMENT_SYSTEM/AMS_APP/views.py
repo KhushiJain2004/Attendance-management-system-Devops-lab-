@@ -154,10 +154,95 @@ def index(request):
     return render(request, 'index.html')
 
 def student_mgmt(request):
-    return render(request, 'student_mgmt.html')
+    student_id = request.GET.get('student_id')
+    student=Student.objects.filter(student_id=student_id)[0]
+
+    student_name=student.student_name
+    class_list=[]
+    if student.class1!='':
+        a=[student.class1]
+        att_str=student.class1_att
+        if att_str.count('P')==0 and att_str.count('A')==0:
+            att='NA'
+        else:
+            att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+        a.append(att)
+        class_list.append(a)
+        if student.class2!='':
+            a=[student.class2]
+            att_str=student.class2_att
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            a.append(att)
+            class_list.append(a)
+            if student.class3!='':
+                a=[student.class3]
+                att_str=student.class3_att
+                if att_str.count('P')==0 and att_str.count('A')==0:
+                    att='NA'
+                else:
+                    att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                a.append(att)
+                class_list.append(a)
+                if student.class4!='':
+                    a=[student.class4]
+                    att_str=student.class4_att
+                    if att_str.count('P')==0 and att_str.count('A')==0:
+                        att='NA'
+                    else:
+                        att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                    a.append(att)
+                    class_list.append(a)
+                    if student.class5!='':
+                        a=[student.class5]
+                        att_str=student.class5_att
+                        if att_str.count('P')==0 and att_str.count('A')==0:
+                            att='NA'
+                        else:
+                            att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                        a.append(att)
+                        class_list.append(a)
+                        if student.class6!='':
+                            a=[student.class6]
+                            att_str=student.class6_att
+                            if att_str.count('P')==0 and att_str.count('A')==0:
+                                att='NA'
+                            else:
+                                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                            a.append(att)
+                            class_list.append(a)
+                            if student.class7!='':
+                                a=[student.class7]
+                                att_str=student.class7_att
+                                if att_str.count('P')==0 and att_str.count('A')==0:
+                                    att='NA'
+                                else:
+                                    att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                                a.append(att)
+                                class_list.append(a)
+                                if student.class8!='':
+                                    a=[student.class8]
+                                    att_str=student.class8_att
+                                    if att_str.count('P')==0 and att_str.count('A')==0:
+                                        att='NA'
+                                    else:
+                                        att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                                    a.append(att)
+                                    class_list.append(a)
+    
+    dic={'student_name':student_name,'student_id':student_id,'class_list':class_list}
+    return render(request, 'student_mgmt.html',dic)
 
 def teacher_mgmt(request):
-    return render(request, 'teacher_mgmt.html')
+    teacher_id = request.GET.get('teacher_id')
+    print(teacher_id)
+    teacher_name=Teacher.objects.filter(teacher_id=teacher_id)[0].teacher_name
+    class_list=list(Subject.objects.filter(teacher_id=teacher_id))
+
+    dic={'teacher_name':teacher_name,'class_list':class_list}
+    return render(request, 'teacher_mgmt.html',dic)
 
 def teacher(request):
     if request.user.is_anonymous:

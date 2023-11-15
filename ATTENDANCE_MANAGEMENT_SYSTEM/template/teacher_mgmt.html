@@ -41,27 +41,21 @@
   <div class="container">
 
     <div class="teacher-info">
-      <h2>Teacher's Name</h2>
+      <h2>{{teacher_name}}</h2>
     </div>
 
-    <a class="btn" href="#">Add a New Batch</a>
+    <!-- <a class="btn" href="#">Add a New Batch</a> -->
     <h1></h1>
 
     <div class="batches-list">
-      <h3>Batches Assigned</h3>
+      <h3>Classes Assigned</h3>
       <ul>
+        {% for q in class_list %}
         <li>
-          <span>Batch 1 - Subject 1</span>
-          <a class="remove-btn btn" href="#">Remove</a>
+          <span>Class ID : {{q.subject_id}}  Subject Name : {{q.subject_name}}</span>
+          <a class="remove-btn btn" href="/class_mgmt/?subject_id={{ q.subject_id }}">Edit</a>
         </li>
-        <li>
-          <span>Batch 2 - Subject 2</span>
-          <a class="remove-btn btn" href="#">Remove</a>
-        </li>
-        <li>
-          <span>Batch 3 - Subject 3</span>
-          <a class="remove-btn btn" href="#">Remove</a>
-        </li>
+        {% endfor %}
       </ul>
     </div>
 
