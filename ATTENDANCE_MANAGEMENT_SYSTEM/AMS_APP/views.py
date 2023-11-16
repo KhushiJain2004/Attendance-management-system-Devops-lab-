@@ -317,3 +317,6 @@ def teacherdas(request):
 
 def teacherdashboard(request):
     return render(request, 'teacherdashboard/teacherdashboard.html')
+
+def viewattendancepageforstudent(request):
+    return render(request, 'viewattendancepageforstudent/viewattendancepageforstudent.html')
