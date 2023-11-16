@@ -151,3 +151,44 @@
                 alert("Please fill in all fields.");
             }
         }
+        function updateAttendanceTable(studentName, course, date, status) {
+            var tableBody = document.getElementById("attendanceTableBody");
+
+            var newRow = tableBody.insertRow(tableBody.rows.length);
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+
+            cell1.innerHTML = studentName;
+            cell2.innerHTML = course;
+            cell3.innerHTML = date;
+            cell4.innerHTML = status;
+
+            var toggleButton = document.createElement("button");
+            toggleButton.innerHTML = status.charAt(0).toUpperCase() + status.slice(1);
+            toggleButton.className = "toggle-button " + status;
+            toggleButton.onclick = function () {
+                toggleAttendanceStatus(toggleButton, newRow);
+            };
+
+            cell5.appendChild(toggleButton);
+        }
+
+        function toggleAttendanceStatus(button, row) {
+            var currentStatus = button.innerHTML.toLowerCase();
+            var newStatus = currentStatus === "present" ? "absent" : "present";
+
+            button.innerHTML = newStatus.charAt(0).toUpperCase() + newStatus.slice(1);
+            button.className = "toggle-button " + newStatus;
+
+            // Update the status in the row's data (you can send this data to the backend for storage)
+            var cells = row.cells;
+            cells[3].innerHTML = newStatus;
+        }
+    </script>
+
+</body>
+</html>
