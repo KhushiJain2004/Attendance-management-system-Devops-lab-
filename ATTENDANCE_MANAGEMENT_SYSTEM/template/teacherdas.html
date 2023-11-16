@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .status-button {
+            cursor: pointer;
+            padding: 5px 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>COURSE NAME</h1>
+
+    <form id="attendanceForm">
+        <label for="fromDate">From Date:</label>
+        <input type="date" id="fromDate" name="fromDate">
+
+        <label for="toDate">To Date:</label>
+        <input type="date" id="toDate" name="toDate">
+
+        <button type="button" onclick="generateTable()">Generate Table</button>
+    </form>
+
+    <table id="attendanceTable">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Student data will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        function generateTable() {
+            // Fetch selected dates
+            var fromDate = document.getElementById("fromDate").value;
+            var toDate = document.getElementById("toDate").value;
+
+            // Clear existing table rows
+            var tableBody = document.getElementById("attendanceTable").getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = "";
+
+            // Example data (replace this with your actual data-fetching logic)
+            var studentsData = [
+                { name: "SREYA", date: "2023-11-11", status: "Present" },
+                { name: "ARYAN", date: "2023-11-11", status: "Absent" },
+                // Add more data as needed
+            ];
+
+            // Filter data based on selected dates
+            var filteredData = studentsData.filter(function (entry) {
+                return entry.date >= fromDate && entry.date <= toDate;
+            });
+
+            // Populate the table with filtered data
+            filteredData.forEach(function (entry) {
+                var row = tableBody.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                cell1.innerHTML = entry.name;
+                cell2.innerHTML = entry.date;
+                cell3.innerHTML = entry.status;
+
+                // Add a button to change the status
+                var button = document.createElement("button");
+                button.className = "status-button";
+                button.innerHTML = "Change Status";
+                button.onclick = function () {
+                    changeStatus(row, entry);
+                };
+                cell4.appendChild(button);
+            });
+        }
+
+        function changeStatus(row, entry) {
+            // Toggle status between "Present" and "Absent"
+            entry.status = entry.status === "Present" ? "Absent" : "Present";
+            row.cells[2].innerHTML = entry.status;
+        }
+    </script>
+
+</body>
+</html>
