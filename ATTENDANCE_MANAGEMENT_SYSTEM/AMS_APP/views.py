@@ -314,3 +314,6 @@ def teach(request):
 
 def teacherdas(request):
     return render(request, 'teacherdas/teacherdas.html')
+
+def teacherdashboard(request):
+    return render(request, 'teacherdashboard/teacherdashboard.html')
