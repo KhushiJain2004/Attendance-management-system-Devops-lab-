@@ -311,3 +311,6 @@ def studentprofile(request):
 
 def teach(request):
     return render(request, 'teach/teach.html')
+
+def teacherdas(request):
+    return render(request, 'teacherdas/teacherdas.html')
