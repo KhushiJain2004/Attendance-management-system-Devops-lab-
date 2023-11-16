@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Information</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            height: 64vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .view-button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>COURSES</h2>
+        
+        <table>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>No. of Students</th>
+                <th>View</th>
+            </tr>
+            <tr>
+                <td>101</td>
+                <td>PPL</td>
+                <td>45</td>
+                <td><button class="view-button" onclick="viewDetails(101)">View</button></td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>PYTHON</td>
+                <td>55</td>
+                <td><button class="view-button" onclick="viewDetails(102)">View</button></td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </table>
+    </div>
+
+    <script>
+        function viewDetails(courseId) {
+            // You can implement the logic to view details for the selected course here
+            alert("View details for Course ID: " + courseId);
+        }
+    </script>
+
+</body>
+</html>
