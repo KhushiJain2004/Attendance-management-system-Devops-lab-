@@ -1,0 +1,87 @@
+=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker</title>
+    <!-- Add your CSS styles here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .date-inputs {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Input field for Course Name -->
+    <label for="courseName">Course Name:</label>
+    <input type="text" id="courseName" name="courseName" placeholder="Enter course name">
+
+    <!-- Replace "Your Course Name" with the actual course name -->
+    <h1 id="displayedCourseName"> Attendance</h1>
+
+    <div class="date-inputs">
+        <label for="dateFrom">Date From:</label>
+        <input type="date" id="dateFrom" name="dateFrom">
+
+        <label for="dateTo">Date To:</label>
+        <input type="date" id="dateTo" name="dateTo">
+
+        <button onclick="updateDetails()">Update</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Attendance Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Replace the content of the table with actual attendance data -->
+            <tr>
+                <td>2023-01-01</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td>2023-01-02</td>
+                <td>Absent</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <script>
+        function updateDetails() {
+            // Get values from input fields
+            var courseName = document.getElementById("courseName").value;
+            var dateFrom = document.getElementById("dateFrom").value;
+            var dateTo = document.getElementById("dateTo").value;
+
+            // Update the displayed course name and date range
+            document.getElementById("displayedCourseName").innerText = courseName + " Attendance";
+            document.getElementById("dateFromDisplay").innerText = dateFrom;
+            document.getElementById("dateToDisplay").innerText = dateTo;
+        }
+    </script>
+
+</body>
+</html>
