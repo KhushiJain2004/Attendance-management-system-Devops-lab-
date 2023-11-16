@@ -19,5 +19,10 @@ urlpatterns = [
     path('viewfaculty', views.viewfaculty, name='viewfaculty'),
     path('viewstudent', views.viewstudent, name='viewstudent'),
     path('logoutuser', views.logoutuser, name='logoutuser'),
+    path('attendancesummary', views.attendancesummary, name='attendancesummary'),
+    path('markStudentAttendance', views.markStudentAttendance, name='markStudentAttendance')
+    path('Studentdashboard/', views.Studentdashboard, name='Studentdashboard'),
+    path('studentprofile/', views.studentprofile, name='studentprofile'),
+    path('teach/',views.teach, name='teach'),
 ]
 

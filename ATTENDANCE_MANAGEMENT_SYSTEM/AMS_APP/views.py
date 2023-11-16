@@ -286,4 +286,28 @@ def logoutuser(request):
     logout(request)
     return redirect('/')
 
+def attendancesummary(request):
+    attendance_data = [
+    ]
 
+    return render(request, 'attendancesummary.html', {'attendance_data': attendance_data})
+
+def markStudentAttendance(request):
+    return render(request, 'markStudentAttendance.html')
+
+def Studentdashboard(request):
+    return render(request, 'Studentdashboard/Studentdashboard.html')
+
+def studentprofile(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        student_id = request.POST.get('student_id')
+        password = request.POST.get('password')
+        courses = request.POST.getlist('courses')
+
+        return HttpResponse(f"Profile updated for {name} with ID {student_id}")
+
+    return render(request, 'studentprofile/studentprofile.html')
+
+def teach(request):
+    return render(request, 'teach/teach.html')
