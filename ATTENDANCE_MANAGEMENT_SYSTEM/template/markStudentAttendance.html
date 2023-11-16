@@ -97,3 +97,21 @@
             background-color: #e74c3c;
         }
     </style>
+
+</head>
+<body>
+
+    <h2>Attendance</h2>
+
+    <form id="attendanceForm">
+        <label for="course">Course:</label>
+        <input type="text" id="course" name="course" required>
+
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" name="studentName" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <button type="button" onclick="saveAttendance()">Save</button>
+    </form>
