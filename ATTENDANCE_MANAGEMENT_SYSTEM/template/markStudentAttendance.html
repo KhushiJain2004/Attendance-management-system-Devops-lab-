@@ -115,3 +115,39 @@
 
         <button type="button" onclick="saveAttendance()">Save</button>
     </form>
+    <h2>Attendance Data</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Course</th>
+                <th>Date</th>
+                <th>Attendance Status</th>
+                <th>Present/Absent</th>
+            </tr>
+        </thead>
+        <tbody id="attendanceTableBody">
+            <!-- Attendance data will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        function saveAttendance() {
+            var course = document.getElementById("course").value;
+            var studentName = document.getElementById("studentName").value;
+            var date = document.getElementById("date").value;
+
+            if (course && studentName && date) {
+                alert(`Saving ${studentName} for ${course} on ${date}`);
+                // You can implement backend logic here to store the attendance data
+
+                // Update the table with the new attendance data
+                updateAttendanceTable(studentName, course, date, "Present");
+
+                // Reset the form after saving attendance
+                document.getElementById("attendanceForm").reset();
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
