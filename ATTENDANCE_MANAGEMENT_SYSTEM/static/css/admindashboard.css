@@ -8,15 +8,30 @@
     text-decoration: none;
 }
 
+.mainheader
+{
+    z-index: 100000;
+    position:fixed;
+    width:100%;
+    
+}
+
 aside{
+    margin-top:60px;
     width: 20%;
     height: 100%;
     background: #000d33;
     float:left;
+    padding-top:20px;
 }
-aside header{
+aside header a{
+    margin:0;
+    padding:0;
+    width:100%;
+    display:block;
+    box-sizing: border-box;
     font-size: 25px;
-    line-height: 50px;
+    line-height: 70px;
     color:white;
     text-align: left;
     border-bottom:2px solid black;
@@ -27,7 +42,6 @@ aside header{
 aside ul a
 {
     display:block;
-    height:100%;
     width: 100%;
     line-height:45px;
     font-size: 20px;
@@ -72,7 +86,8 @@ header a{
 {
     width: 80%;
     float:right;
-
+    margin-top:60px;
+    padding-top:20px;
 }
 iframe{
     width:100%;
@@ -81,4 +96,75 @@ iframe{
 }
 i{
     margin-right: 7px;
+}
+.content-container h3
+    {
+        padding:20px;
+        font-size:28px;
+        text-align:center;
+    }
+.content-container h4
+{
+    padding:0px 30px;
+    font-size: 22px;
+}
+.dashboard-container
+{
+    display:flex;
+    margin:5px 30px;
+    column-gap: 20px;
+    flex-wrap: wrap;
+}
+.card{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    min-width:300px;
+    min-height:200px;
+    margin:20px 0px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out
+}
+.purple
+{
+    background-color: #e7e6fb;
+}
+.pink
+{
+    background-color: #f9e5ea;
+}
+.blue
+{
+    background-color: #dfedf7;
+}
+.icon
+{
+
+    border-radius: 50%;
+    width:60px;
+    height:60px;
+
+}
+.icon-purple
+{
+    background-color: #6151fb;
+}
+.icon-pink
+{
+    background-color:#ef2b58 ; 
+}
+.icon-blue
+{
+    background-color:#1b8be3 ;
+}
+.icon i{
+    color:white;
+    font-size: 30px;
+    line-height:60px;
+    vertical-align: middle;
+    text-align: center;
+    padding-left:5px;
 }
