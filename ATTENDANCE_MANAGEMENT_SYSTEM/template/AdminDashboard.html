@@ -9,11 +9,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/admindashboard.css'%}">
-</head>
+
+    <style>
+        .mainheader
+        {
+            z-index: 100000;
+            position:fixed;
+            width:100%;
+            
+        }
+        aside{
+            height:100%;
+            margin-top:60px;
+            padding-top:20px;
+        }
+        .content-container{
+            margin-top:60px;
+            padding-top:20px;
+        }
+
+        .content-container h4
+        {
+            padding:0px 30px;
+            font-size: 22px;
+        }
+        .dashboard-container
+        {
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+    </style>
 </head>
 <body>
     
-    <header>
+    <header class="mainheader">
         <h1><i class="fas fa-university"></i>Attendance Management System</h1>
         <h2>Welcome Admin</h2>
         <a href="/logoutuser" class="btn">LogOut</a>
@@ -21,9 +51,9 @@
 
     <aside>
         <header>
-            <div>
+            <a href="AdminDashboard.html">
                 <i class="fas fa-bars"></i>Dashboard
-            </div>
+            </a>
         </header>
         <ul>
             <li><h4><i class="fas fa-chalkboard"></i>Manage Classes</h4></li>
@@ -50,9 +80,23 @@
 
     <main>
         <div class="content-container">
-            <!-- <iframe name="content" id="content>" tittle="Admin Dashboard">
-
-            </iframe> -->
+            <h3>Admin Portal</h3>
+            <div class="dashboard-container">
+                <div class="card purple">
+                    <div class="icon icon-purple"><i class="fa fa-graduation-cap"></i></div>
+                    <h3>Total Students</h3>
+                    <h4>160</h4>
+                </div>
+                <div class="card pink">
+                    <div class="icon icon-pink"><i class="fa fa-chalkboard-teacher"></i></div>
+                    <h3>Total Teachers</h3>
+                    <h4>30</h4>
+                </div>
+                <div class="card blue">
+                    <div class="icon icon-blue"><i class="fa fa-book-open"></i></div>
+                    <h3>Total Courses</h3>
+                    <h4>5</h4>
+                </div>
         </div>
     </main>
 </body>
