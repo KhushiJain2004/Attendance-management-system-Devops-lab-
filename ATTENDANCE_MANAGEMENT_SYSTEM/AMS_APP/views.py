@@ -21,7 +21,7 @@ def AdminLogin(request):
 
 def StudentLogin(request):
     if not request.user.is_anonymous:
-        return redirect("/")
+        return redirect("Studentdashboard")
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -30,14 +30,14 @@ def StudentLogin(request):
 
         if user is not None:
             login(request, user)
-            return redirect('')
+            return redirect('Studentdashboard')
         return render(request, 'Studentlogin.html', {'error_message': 'Invalid credentials'})
 
     return render(request, 'Studentlogin.html')
 
 def TeacherLogin(request):
     if not request.user.is_anonymous:
-        return redirect("/")
+        return redirect("teacherdashboard")
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -45,7 +45,7 @@ def TeacherLogin(request):
 
         if user is not None:
             login(request, user)
-            return redirect('teacher_dashboard')
+            return redirect('teacherdashboard')
         return render(request, 'TeacherLogin.html', {'error_message': 'Invalid credentials'})
 
     return render(request, 'TeacherLogin.html')
@@ -85,7 +85,11 @@ def addnewstudent(request):
 
 
 def AdminDashboard(request):
-    return render(request, 'AdminDashboard.html')
+    num_student=len(Student.objects.all())
+    num_teacher=len(Teacher.objects.all())
+    num_class=len(Subject.objects.all())
+    dic={'num_student':num_student,'num_teacher':num_teacher,'num_class':num_class}
+    return render(request, 'AdminDashboard.html',dic)
 
 def class_mgmt(request):
     subject_id = request.GET.get('subject_id')
@@ -296,7 +300,7 @@ def markStudentAttendance(request):
     return render(request, 'markStudentAttendance.html')
 
 def Studentdashboard(request):
-    return render(request, 'Studentdashboard/Studentdashboard.html')
+    return render(request, 'Studentdashboard.html')
 
 def studentprofile(request):
     if request.method == 'POST':
@@ -305,18 +309,31 @@ def studentprofile(request):
         password = request.POST.get('password')
         courses = request.POST.getlist('courses')
 
-        return HttpResponse(f"Profile updated for {name} with ID {student_id}")
 
-    return render(request, 'studentprofile/studentprofile.html')
+    return render(request, 'studentprofile.html')
 
 def teach(request):
-    return render(request, 'teach/teach.html')
+    if request.user.is_anonymous:
+        return redirect("/")
+    else:
+        ruser=request.user.username
+        if 'S' in ruser:
+            return redirect('/studentdashboard')
+        elif ('T' not in ruser) and ('akshit'!=ruser):
+            return redirect('/admindashboard')
+    teacher_id=request.user.username
+    class_list=list(Subject.objects.filter(teacher_id=teacher_id))
+    dic={'class_list':class_list}
+    return render(request, 'teach.html',dic)
 
 def teacherdas(request):
-    return render(request, 'teacherdas/teacherdas.html')
+    return render(request, 'teacherdas.html')
 
 def teacherdashboard(request):
-    return render(request, 'teacherdashboard/teacherdashboard.html')
+    return render(request, 'teacherdashboard.html')
 
 def viewattendancepageforstudent(request):
-    return render(request, 'viewattendancepageforstudent/viewattendancepageforstudent.html')
+    return render(request, 'viewattendancepageforstudent.html')
+
+def coursename(request):
+    return render(request, 'coursename.html')

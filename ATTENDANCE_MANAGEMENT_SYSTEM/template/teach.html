@@ -57,20 +57,24 @@
                 <th>Course ID</th>
                 <th>Course Name</th>
                 <th>No. of Students</th>
+                <th>Classes Held</th>
                 <th>View</th>
             </tr>
+            {% for q in class_list %}
             <tr>
-                <td>101</td>
-                <td>PPL</td>
-                <td>45</td>
+                <td>{{ q.subject_id }}</td>
+                <td>{{ q.subject_name }}</td>
+                <td>{{ q.number_of_students }}</td>
+                <td>{{ q.classes_held }}</td>
                 <td><button class="view-button" onclick="viewDetails(101)">View</button></td>
             </tr>
-            <tr>
+            {% endfor %}
+            <!-- <tr>
                 <td>102</td>
                 <td>PYTHON</td>
                 <td>55</td>
                 <td><button class="view-button" onclick="viewDetails(102)">View</button></td>
-            </tr>
+            </tr> -->
             <!-- Add more rows as needed -->
         </table>
     </div>
