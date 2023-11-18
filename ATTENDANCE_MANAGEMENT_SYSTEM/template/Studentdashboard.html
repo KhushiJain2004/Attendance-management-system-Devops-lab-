@@ -26,13 +26,29 @@
         .content-container h4
         {
             padding:20px;
-            font-size: 20px;
+            font-size: 25px;
         }
-        .courses
+        aside{
+            height:100vh;
+            position:fixed;
+            margin-top:60px;
+            padding-top:20px;
+        }
+        .card
         {
-            display:flex;
-            column-gap: 20px;
-            align-content: space-between;
+            flex-direction: row;
+            min-height:150px;
+            justify-content: center;
+
+        }
+        .dashboard_container
+        {
+            justify-content: center;
+            align-items:center;
+        }
+        .icon i{
+            color:white;
+            font-size: 25px;
         }
 
     </style>
@@ -40,7 +56,7 @@
 </head>
 <body>
     
-    <header>
+    <header class="mainheader">
         <h1><i class="fas fa-university"></i>Attendance Management System</h1>
         <h2>Welcome Student</h2>
         <a href="" class=""btn>LogOut</a>
@@ -48,12 +64,12 @@
 
     <aside>
         <header>
-            <div>
+            <a >
                 <i class="fas fa-bars"></i>Dashboard
             </div>
         </header>
         <ul>
-            <li><a href=""><i class="fa fa-home"></i>Home</a></li>
+            <li><a href="Studentdashboard.html"><i class="fa fa-home"></i>Home</a></li>
             <li><a href=""><i class="fa fa-user"></i>My Profile</a></li>
             <li><a href=""><i class="fa fa-link"></i>View Attendance</a></li>
         </ul>
@@ -61,6 +77,35 @@
 
     <main>
         <div class="content-container">
+            <h3>Student Portal</h3>
+            <h4>My courses</h4>
+            <div class="dashboard-container">
+                <div class="card purple">
+                    <div class="icon "><i class="fa fa-book-open"></i></div>
+                    <h3>Course</h3></div>
+                <div class="card pink">
+                    <div class="icon "><i class="fa fa-book-open"></i></div>
+                    <h3>Course</h3></div>
+                <div class="card blue">
+                    <div class="icon "><i class="fa fa-book-open"></i></div>
+                    <h3>Course</h3></div>
+                <div class="card purple">
+                    <div class="icon "><i class="fa fa-book-open"></i></div>
+                    <h3>Course</h3></div>
+                <div class="card pink">
+                    <div class="icon "><i class="fa fa-book-open"></i></div>
+                    <h3>Course</h3></div>
+                <div class="card pink">
+                    <div class="icon "><i class="fa fa-book-open"></i></div>
+                    <h3>Course</h3></div>
+                <div class="card blue">
+                    <div class="icon "><i class="fa fa-book-open"></i></div>
+                    <h3>Course</h3></div>
+                <div class="card purple">
+                    <div class="icon "><i class="fa fa-book-open"></i></div>
+                    <h3>Course</h3></div>
+                </div>
+            </div>
         </div>
     </main>
 </body>
