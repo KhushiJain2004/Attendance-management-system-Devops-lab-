@@ -4,14 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Information</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            height: 64vh;
-            margin: 0;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" type="text/css" href="static/css/admindashboard.css">
+    <style>
+        aside ul a{
+            line-height:70px;
+            font-size:22px;
+        }
+        aside{
+            height:100vh;
+            margin-top:60px;
+            padding-top:20px;
+        }
+        .content-container{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top:60px;
+            padding-top:20px;
+        }
+        .card
+        {
+            width:300px;
+        }
+        .dashboard-container
+        {
+            justify-content:space-between;
+        }
         .container {
             text-align: center;
             width: 80%;
@@ -19,8 +40,8 @@
 
         table {
             border-collapse: collapse;
-            width: 100%;
-            margin: 20px;
+            width: 90%;
+            margin: 10px;
         }
 
         th, td {
@@ -47,10 +68,40 @@
         }
     </style>
 </head>
+</head>
 <body>
+    
+    <header class="mainheader">
+        <h1><i class="fas fa-university"></i>Attendance Management System</h1>
+        <h2>Welcome Professor</h2>
+        <a href="" class=""btn>LogOut</a>
+    </header>
 
-    <div class="container">
-        <h2>COURSES</h2>
+    <aside>
+        <header>
+            <a href="teacherdashboard.html">
+                <i class="fas fa-bars"></i>Dashboard
+            </a>
+        </header>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard"></i>Manage Classes</h4></li>
+            <ul>
+                <li><a href=""><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard-teacher"></i>Manage Attendance</h4></li>
+            <ul>
+                <li><a href=""><i class="fa fa-pencil"></i>Take attendance</a></li>
+                <li><a href=""><i class="fa fa-link"></i>View Attendance</a></li>
+            </ul>
+        </ul>
+    </aside>
+</head>
+<body>
+    <main>
+    <div class="content-container">
+        <h3>COURSES</h3>
         
         <table>
             <tr>
@@ -87,6 +138,6 @@
             alert("View details for Course ID: " + courseId);
         }
     </script>
-
+</main>
 </body>
 </html>
