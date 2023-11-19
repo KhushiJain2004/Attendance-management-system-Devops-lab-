@@ -5,20 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="{% static 'css/student_mgmt.css'%}">
+    <link rel="stylesheet" href="{% static 'css/admindashboard.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/student_mgmt.css'%}">
+    <style>
+        .body
+        {
+         font-family: 'Times New Roman', Times, serif;
+        }
+        .pageheader
+        {
+            display:flex;
+            flex-direction:column;
+            background-color: lightsteelblue;
+            color:black;
+            font-size: 30px;
+        }
+        .heading
+        {
+            display:flex;
+            column-gap:20px;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+        .pageheader h1{
+            font-size: 25px;
+            color: black;
+        }
+        .mainheader h1
+        {
+            color:white;
+        }
+        .table
+        {
+            width:90%;
+            margin:35px auto;
+        }
+        th{
+            background-color: black;
+        }
+    </style>
+
 </head>
 <body>
-    <div class="container">
+    <header class="mainheader">
+        <h1><i class="fas fa-university"></i>Attendance Management System</h1>
+        <h2>Welcome Admin</h2>
+        <a href="/logoutuser" class="btn">LogOut</a>
+    </header>
+
+    <aside>
         <header>
+            <a href="AdminDashboard.html">
+                <i class="fas fa-bars"></i>Dashboard
+            </a>
+        </header>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard"></i>Manage Classes</h4></li>
+            <ul>
+                <li><a href="/courseadd"><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href="/viewclass"><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard-teacher"></i>Manage Faculty</h4></li>
+            <ul>
+                <li><a href="/teacher"><i class="fa fa-pencil fa-fw"></i>Add New Faculty</a></li>
+                <li><a href="/viewfaculty"><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><h4><i class="fas fa-book-reader" aria-hidden="true"></i>Manage Students</h4></li>
+            <ul>
+                <li><a href="/addnewstudent"><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href="/viewstudent"><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+    </aside>
+    <div class="content-container">
+        <header class="pageheader">
             <h1>Student Attendance</h1>
-            <p>Student ID: {{ student_id}}</p>
-            <p>Student Name: {{ student_name}}</p>
+            <div class="heading">
+                <p>Student ID: {{ student_id}}</p>
+                <p>Student Name: {{ student_name}}</p>
+            </div>
         </header>
         <!-- <div>
             <button>Add Subject</button>
             <button>Remove Subject</button>
         </div> -->
 
+        <div class="table">
         <table>
             <tr>
                 <th>Subject</th>
@@ -34,6 +113,7 @@
             {% endfor %}
             <!-- Add more subjects and attendance percentages as needed -->
         </table>
+    </div>
 
         <!-- Add buttons for "Add Subject" and "Remove Subject" -->
         
