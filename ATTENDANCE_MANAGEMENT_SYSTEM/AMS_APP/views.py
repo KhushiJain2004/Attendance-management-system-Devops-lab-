@@ -369,10 +369,105 @@ def teach(request):
     return render(request, 'teach.html',dic)
 
 def teacherdas(request):
-    return render(request, 'teacherdas.html')
+    subject_id= request.GET.get('subject_id')
+    subject_name=Subject.objects.filter(subject_id=subject_id)[0].subject_name
+    sub=Subject.objects.filter(subject_id=subject_id)[0]
+    date=sub.class_info.split(',')
+    date.pop(0)
+
+
+    student_list=list(Student.objects.filter(class1=subject_id))+list(Student.objects.filter(class2=subject_id))+list(Student.objects.filter(class3=subject_id))+list(Student.objects.filter(class4=subject_id))+list(Student.objects.filter(class5=subject_id))+list(Student.objects.filter(class6=subject_id))+list(Student.objects.filter(class7=subject_id))+list(Student.objects.filter(class8=subject_id))    
+    student_list_new=[]
+    for i in student_list:
+        id=i.student_id
+        name=i.student_name
+
+        if i.class1==subject_id:
+            att_str=i.class1_att
+            att_list=att_str
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            stud_dic={'id':id,'name':name,'att':att,'att_list':att_list}
+
+        elif i.class2==subject_id:
+            att_str=i.class2_att
+            att_list=att_str
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            stud_dic={'id':id,'name':name,'att':att,'att_list':att_list}
+
+        elif i.class3==subject_id:
+            att_str=i.class3_att
+            att_list=att_str
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            stud_dic={'id':id,'name':name,'att':att,'att_list':att_list}
+
+        elif i.class4==subject_id:
+            att_str=i.class4_att
+            att_list=att_str
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            stud_dic={'id':id,'name':name,'att':att,'att_list':att_list}
+
+        elif i.class5==subject_id:
+            att_str=i.class5_att
+            att_list=att_str
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            stud_dic={'id':id,'name':name,'att':att,'att_list':att_list}
+
+        elif i.class6==subject_id:
+            att_str=i.class6_att
+            att_list=att_str
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            stud_dic={'id':id,'name':name,'att':att,'att_list':att_list}
+
+        elif i.class7==subject_id:
+            att_str=i.class7_att
+            att_list=att_str
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            stud_dic={'id':id,'name':name,'att':att,'att_list':att_list}
+
+        elif i.class8==subject_id:
+            att_str=i.class8_att
+            att_list=att_str
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            stud_dic={'id':id,'name':name,'att':att,'att_list':att_list}
+
+        student_list_new.append(stud_dic)
+
+    dic={'date':date,'subject_id':subject_id,'subject_name':subject_name,'student_list':student_list_new}
+    return render(request, 'teacherdas.html',dic)
 
 def teacherdashboard(request):
-    return render(request, 'teacherdashboard.html')
+    teacher_id=request.user.username
+    classes=list(Subject.objects.filter(teacher_id=teacher_id))
+    num_classes=len(classes)
+    num_students=0
+    for i in classes:
+        num_students+=i.number_of_students
+    dic={'num_classes':num_classes,'num_students':num_students}
+    return render(request, 'teacherdashboard.html',dic)
 
 def viewattendancepageforstudent(request):
     return render(request, 'viewattendancepageforstudent.html')

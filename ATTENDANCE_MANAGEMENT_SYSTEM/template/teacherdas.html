@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <title>Attendance Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/admindashboard.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admindashboard.css' %}">
     <style>
         aside ul a{
             line-height:70px;
@@ -97,14 +98,14 @@
 
     <aside>
         <header>
-            <a href="teacherdashboard.html">
+            <a href="teacherdashboard">
                 <i class="fas fa-bars"></i>Dashboard
             </a>
         </header>
         <ul>
             <li><h4><i class="fas fa-chalkboard"></i>Manage Classes</h4></li>
             <ul>
-                <li><a href=""><i class="fa fa-link"></i>View all</a></li>
+                <li><a href="teach"><i class="fas fa-link"></i>View all</a></li>
             </ul>
         </ul>
         <ul>
@@ -125,9 +126,10 @@
     <div class="login-container">
    
 
-    <h3>COURSE NAME</h3>
+    <h3>{{ subject_id }} : {{ subject_name }}</h3>
 
-    <form id="attendanceForm">
+
+    <!-- <form id="attendanceForm">
         <label for="fromDate" class="date">From Date:</label>
         <input type="date" id="fromDate" name="fromDate" class="date">
 
@@ -135,23 +137,35 @@
         <input type="date" id="toDate" name="toDate" class="date">
 
         <button type="button" onclick="generateTable()" class="date">Generate Table</button>
-    </form>
+    </form> -->
 
     <table id="attendanceTable">
         <thead>
             <tr>
+                <th>Student ID</th>
                 <th>Student Name</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>Attendance</th>
+                {% for q in date %}
+                <th>{{ q }}</th>
+                {% endfor %}
             </tr>
         </thead>
         <tbody>
             <!-- Student data will be inserted here -->
+            {% for q in student_list %}
+            <tr>
+            <td>{{ q.id }}</td>
+            <td>{{ q.name }}</td>
+            <td>{{ q.att }}</td>
+            {% for i in q.att_list %}
+            <td>{{ i }}</td>
+            {% endfor %}
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <script>
+    <!-- <script>
         function generateTable() {
             // Fetch selected dates
             var fromDate = document.getElementById("fromDate").value;
@@ -200,7 +214,7 @@
             entry.status = entry.status === "Present" ? "Absent" : "Present";
             row.cells[2].innerHTML = entry.status;
         }
-    </script>
+    </script> -->
     </div>
     </main>
 </body>
