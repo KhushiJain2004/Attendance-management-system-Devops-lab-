@@ -1,17 +1,19 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/admindashboard.css">
+
     <!-- Add your CSS styles here -->
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Times New Roman', Times, serif;
         }
         h1 {
-            text-align: center;
+            text-align: center; 
         }
         table {
             width: 100%;
@@ -25,63 +27,108 @@
         }
         .date-inputs {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Add margin at the bottom of .date-inputs */
         }
+
+        aside ul a{
+            padding-left:20px;
+            line-height:80px;
+            font-size:22px;
+        }
+        aside ul a:hover{
+            padding-left: 30px;
+        }
+        aside{
+            height:100vh;
+            margin-top:60px;
+            padding-top:20px;
+        }
+        .course-name{
+            display: flex;;
+            justify-content: center;
+            column-gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-size: 20px;;
+        }
+
     </style>
 </head>
 <body>
+    <header class="mainheader">
+        <h1><i class="fas fa-university"></i>Attendance Management System</h1>
+        <h2>Welcome Student</h2>
+        <a href="" class="btn">LogOut</a>
+    </header>
 
-    <!-- Input field for Course Name -->
-    <label for="courseName">Course Name:</label>
-    <input type="text" id="courseName" name="courseName" placeholder="Enter course name">
+    <aside>
+        <header>
+            <a>
+                <i class="fas fa-bars"></i>Dashboard
+            </a>
+        </header>
+        <ul>
+            <li><a href="Studentdashboard.html"><i class="fa fa-home"></i>Home</a></li>
+            <li><a href=""><i class="fa fa-user"></i>My Profile</a></li>
+            <li><a href=""><i class="fa fa-link"></i>View Attendance</a></li>
+        </ul>
+    </aside>
 
-    <!-- Replace "Your Course Name" with the actual course name -->
-    <h1 id="displayedCourseName"> Attendance</h1>
+    <main>
+        <div class="content-container">
+            <h3>Attendance Summary</h3>
 
-    <div class="date-inputs">
-        <label for="dateFrom">Date From:</label>
-        <input type="date" id="dateFrom" name="dateFrom">
+            <!-- Input field for Course Name -->
+            <div class="course-name">
+                <label for="courseName" >Course Name:</label>
+                <input type="text" id="courseName" name="courseName" placeholder="Enter course name">
+            </div>
 
-        <label for="dateTo">Date To:</label>
-        <input type="date" id="dateTo" name="dateTo">
+            <div class="date-inputs">
+                <label for="dateFrom">Date From:</label>
+                <input type="date" id="dateFrom" name="dateFrom">
 
-        <button onclick="updateDetails()">Update</button>
-    </div>
+                <label for="dateTo">Date To:</label>
+                <input type="date" id="dateTo" name="dateTo">
 
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Attendance Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Replace the content of the table with actual attendance data -->
-            <tr>
-                <td>2023-01-01</td>
-                <td>Present</td>
-            </tr>
-            <tr>
-                <td>2023-01-02</td>
-                <td>Absent</td>
-            </tr>
-            <!-- Add more rows as needed -->
-        </tbody>
-    </table>
+                <button onclick="updateDetails()">Update</button>
+            </div>
 
-    <script>
-        function updateDetails() {
-            // Get values from input fields
-            var courseName = document.getElementById("courseName").value;
-            var dateFrom = document.getElementById("dateFrom").value;
-            var dateTo = document.getElementById("dateTo").value;
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Attendance Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Replace the content of the table with actual attendance data -->
+                    <tr>
+                        <td>2023-01-01</td>
+                        <td>Present</td>
+                    </tr>
+                    <tr>
+                        <td>2023-01-02</td>
+                        <td>Absent</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
 
-            // Update the displayed course name and date range
-            document.getElementById("displayedCourseName").innerText = courseName + " Attendance";
-            document.getElementById("dateFromDisplay").innerText = dateFrom;
-            document.getElementById("dateToDisplay").innerText = dateTo;
-        }
-    </script>
+            <script>
+                function updateDetails() {
+                    // Get values from input fields
+                    var courseName = document.getElementById("courseName").value;
+                    var dateFrom = document.getElementById("dateFrom").value;
+                    var dateTo = document.getElementById("dateTo").value;
 
+                    // Update the displayed course name and date range
+                    document.getElementById("displayedCourseName").innerText = courseName + " Attendance";
+                    document.getElementById("dateFromDisplay").innerText = dateFrom;
+                    document.getElementById("dateToDisplay").innerText = dateTo;
+                }
+            </script>
+        </div>
+    </main>
 </body>
 </html>
