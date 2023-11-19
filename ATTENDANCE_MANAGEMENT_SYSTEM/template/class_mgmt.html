@@ -6,45 +6,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <link rel="stylesheet" href="{% static 'css/class_mgmt.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/admindashboard.css">
+
 </head>
 <body>
-    <header>
-        <h1>Class ID : {{ class_id}}</h1>
-        <h1>Class Name : {{ class_name}}</h1>
-        <div class="teacher-name">
-            <label for="teacherName">Teacher's ID : {{ teacher_id }}      T</label>
-            <label for="teacherName">eacher's Name : {{ teacher_name }}</label>
-        </div>
+
+    <header class="mainheader">
+        <h1><i class="fas fa-university"></i>Attendance Management System</h1>
+        <h2>Welcome Admin</h2>
+        <a href="/logoutuser" class="btn">LogOut</a>
     </header>
-    <main>
-        <div class="add-student">
-            <form method="post" action="/class_mgmt/?subject_id={{ class_id }}">
-                {% csrf_token %}
-                    <div class="form-group">
-                        <label for="name">Student ID</label>
-                        <input type="text" class="form-control" id="student_id" name="student_id" placeholder="SXXXXXXXX">
-                    </div>
+
+    <aside>
+        <header>
+            <a href="AdminDashboard.html">
+                <i class="fas fa-bars"></i>Dashboard
+            </a>
+        </header>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard">  </i>Manage Classes</h4></li>
+            <ul>
+                <li><a href="/courseadd" target="content"><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href="/viewclass" target="content"><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard-teacher"></i>Manage Faculty</h4></li>
+            <ul>
+                <li><a href="/teacher"><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href="/viewfaculty"><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><h4><i class="fas fa-book-reader" aria-hidden="true"></i>Manage Students</h4></li>
+            <ul>
+                <li><a href="/addnewstudent"><i class="fa fa-pencil fa-fw"></i>Add New</a></li>
+                <li><a href="/viewstudent"><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+    </aside>
+    <div class="content-container">
+    {
+            <header class="pageheader">
+                <h1>Class ID : {{ class_id}}</h1>
+                <h1>Class Name : {{ class_name}}</h1>
+            </header>
+                <div class="teacher-name">
+                    <label for="teacherName">Teacher's ID : {{ teacher_id }}      </label>
+                    <label for="teacherName">Teacher's Name : {{ teacher_name }}</label>
+                </div>
+
+            <main>
+                <div class="add-student">
+                    <form method="post" action="/class_mgmt/?subject_id={{ class_id }}">
+                        {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">Student ID</label>
+                                <input type="text" class="form-control" id="student_id" name="student_id" placeholder="SXXXXXXXX">
+                            </div>
+                            
+                            <button class="btn btn-primary" type="submit">Add Student</button>
+                        </form>
+                </div>
+                <table>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Student Attendance</th>
+                        <!-- <th>Remove</th> -->
+                    </tr>
+                    {% for q in student_list %}
+                                  <tr>
+                                    <td>{{q.student_id}}</td>
+                                    <td>{{q.student_name}}</td>
+                                    <td>{{q.student_attendance}}</td>
+                                    <!-- <td><a href="/remove/?subject_id={{ q.subject_id }}">Edit</a></td> -->
+                                  </tr>
+                                  {% endfor %}
                     
-                    <button class="btn btn-primary" type="submit">Add Student</button>
-                </form>
-        </div>
-        <table>
-            <tr>
-                <th>Student ID</th>
-                <th>Student Name</th>
-                <th>Student Attendance</th>
-                <!-- <th>Remove</th> -->
-            </tr>
-            {% for q in student_list %}
-						  <tr>
-							<td>{{q.student_id}}</td>
-							<td>{{q.student_name}}</td>
-							<td>{{q.student_attendance}}</td>
-							<!-- <td><a href="/remove/?subject_id={{ q.subject_id }}">Edit</a></td> -->
-						  </tr>
-						  {% endfor %}
-            
-        </table>
-    </main>
+                </table>
+            </main>
+        }
+
+    </div>
 </body>
 </html>

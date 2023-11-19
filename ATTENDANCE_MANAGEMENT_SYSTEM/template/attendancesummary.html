@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Summary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/admindashboard.css">
     <!-- Add your CSS styles here -->
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
         }
         h1 {
             text-align: center;
@@ -29,41 +31,107 @@
         .high-attendance {
             background-color: #CCFFCC; /* Light green */
         }
+
+        <!---->
+        aside ul a{
+            padding-left:20px;
+            line-height:80px;
+            font-size:22px;
+        }
+        aside ul a:hover{
+            padding-left: 30px;
+        }
+        .content-container h3
+        {
+            padding:20px;
+            font-size:28px;
+            text-align:center;
+        }
+        .content-container h4
+        {
+            padding:20px;
+            font-size: 25px;
+        }
+        aside{
+            height:100vh;
+            position:fixed;
+            margin-top:60px;
+            padding-top:20px;
+        }
+        .card
+        {
+            flex-direction: row;
+            min-height:150px;
+            justify-content: center;
+
+        }
+        .dashboard_container
+        {
+            justify-content: center;
+            align-items:center;
+        }
+        .icon i{
+            color:white;
+            font-size: 25px;
+        }
+
     </style>
 </head>
-<body>
+    <body>
+    
+        <header class="mainheader">
+            <h1><i class="fas fa-university"></i>Attendance Management System</h1>
+            <h2>Welcome Student</h2>
+            <a href="" class=""btn>LogOut</a>
+        </header>
+    
+        <aside>
+            <header>
+                <a >
+                    <i class="fas fa-bars"></i>Dashboard
+                </div>
+            </header>
+            <ul>
+                <li><a href="Studentdashboard.html"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href=""><i class="fa fa-user"></i>My Profile</a></li>
+                <li><a href=""><i class="fa fa-link"></i>View Attendance</a></li>
+            </ul>
+        </aside>
+        <main>
+            <div class="content-container">
+    
+            <h3>Attendance Summary</h3>
 
-    <h1>Attendance Summary</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Course Name</th>
-                <th>Classes Attended</th>
-                <th>Total Classes</th>
-                <th>Attendance Percentage</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Replace the content of the table with actual attendance summary data -->
-            <tr class="low-attendance">
-                <td>Course Name1</td>
-                <td>20</td>
-                <td>30</td>
-                <td>66.67%</td>
-                <td>Low</td>
-            </tr>
-            <tr class="high-attendance">
-                <td>Course Name2</td>
-                <td>25</td>
-                <td>30</td>
-                <td>83.33%</td>
-                <td>High</td>
-            </tr>
-            <!-- Add more rows as needed -->
-        </tbody>
-    </table>
-
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Classes Attended</th>
+                        <th>Total Classes</th>
+                        <th>Attendance Percentage</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Replace the content of the table with actual attendance summary data -->
+                    <tr class="low-attendance">
+                        <td>Course Name1</td>
+                        <td>20</td>
+                        <td>30</td>
+                        <td>66.67%</td>
+                        <td>Low</td>
+                    </tr>
+                    <tr class="high-attendance">
+                        <td>Course Name2</td>
+                        <td>25</td>
+                        <td>30</td>
+                        <td>83.33%</td>
+                        <td>High</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+</div>
+</main>
 </body>
 </html>

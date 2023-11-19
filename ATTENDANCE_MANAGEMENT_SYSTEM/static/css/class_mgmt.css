@@ -5,24 +5,34 @@ body, h1 {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     background-color: #f0f0f0;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
+.pageheader {
+    font-size:15px;
+    display:flex;
+    flex-direction: column;
+    background-color: rgb(182, 202, 228);
+    color: black;
+    justify-content:center;
+    column-gap:40px;
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
 }
-
-.teacher-name {
+.teacher-name { 
     display: flex;
+    flex-direction: row;
+    height:50px;
+    column-gap:30px;
+    font-size:19px;
     align-items: center;
     justify-content: center;
+    font-weight:bold;   
 }
-
+form button{
+    margin-top:13px;
+}
 .edit-button {
     display: flex;
     align-items: center;
@@ -35,13 +45,13 @@ header {
     transform: scale(1.1);
 }
 
-main {
-    padding: 20px;
-}
 
 .add-student {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .add-student button {
@@ -69,7 +79,7 @@ th, td {
 }
 
 th {
-    background-color: #333;
+    background-color: black;
     color: #fff;
 }
 
