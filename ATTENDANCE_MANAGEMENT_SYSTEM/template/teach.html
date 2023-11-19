@@ -59,6 +59,7 @@
                 <th>No. of Students</th>
                 <th>Classes Held</th>
                 <th>View</th>
+                <th>Mark Today's Attendance</th>
             </tr>
             {% for q in class_list %}
             <tr>
@@ -66,7 +67,8 @@
                 <td>{{ q.subject_name }}</td>
                 <td>{{ q.number_of_students }}</td>
                 <td>{{ q.classes_held }}</td>
-                <td><button class="view-button" onclick="viewDetails(101)">View</button></td>
+                <td><a href="/teacherdas/?subject_id={{ q.subject_id }}">View Details</a></td>
+                <td><a href="/markStudentAttendance/?subject_id={{ q.subject_id }}">Mark Today's Attendance</a></td>
             </tr>
             {% endfor %}
             <!-- <tr>

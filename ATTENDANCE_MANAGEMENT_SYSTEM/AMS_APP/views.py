@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from AMS_APP.models import Teacher,Student,Subject
 from django.contrib.auth.models import User
 from django.contrib import messages
+from datetime import datetime
 
 def AdminLogin(request):
     if not request.user.is_anonymous:
@@ -297,7 +298,48 @@ def attendancesummary(request):
     return render(request, 'attendancesummary.html', {'attendance_data': attendance_data})
 
 def markStudentAttendance(request):
-    return render(request, 'markStudentAttendance.html')
+    if request.method == 'POST':
+        subject_id= request.GET.get('subject_id')
+        sub=Subject.objects.filter(subject_id=subject_id)[0]
+        sub.classes_held+=1
+        date=datetime.today().strftime('%Y-%m-%d')
+        sub.class_info+=','+ datetime.today().strftime('%Y-%m-%d')
+        sub.save()
+        student_list=list(Student.objects.filter(class1=subject_id))+list(Student.objects.filter(class2=subject_id))+list(Student.objects.filter(class3=subject_id))+list(Student.objects.filter(class4=subject_id))+list(Student.objects.filter(class5=subject_id))+list(Student.objects.filter(class6=subject_id))+list(Student.objects.filter(class7=subject_id))+list(Student.objects.filter(class8=subject_id))
+        for i in student_list:
+            value=request.POST.get(i.student_id)
+            if i.class1==subject_id:
+                i.class1_att+=value
+                i.save()
+            elif i.class2==subject_id:
+                i.class2_att+=value
+                i.save()
+            elif i.class3==subject_id:
+                i.class3_att+=value
+                i.save()
+            elif i.class4==subject_id:
+                i.class4_att+=value
+                i.save()
+            elif i.class5==subject_id:
+                i.class5_att+=value
+                i.save()
+            elif i.class6==subject_id:
+                i.class6_att+=value
+                i.save()
+            elif i.class7==subject_id:
+                i.class7_att+=value
+                i.save()
+            elif i.class8==subject_id:
+                i.class8_att+=value
+                i.save()
+        
+        return redirect('/teach')
+            
+
+    subject_id= request.GET.get('subject_id')
+    student_list=list(Student.objects.filter(class1=subject_id))+list(Student.objects.filter(class2=subject_id))+list(Student.objects.filter(class3=subject_id))+list(Student.objects.filter(class4=subject_id))+list(Student.objects.filter(class5=subject_id))+list(Student.objects.filter(class6=subject_id))+list(Student.objects.filter(class7=subject_id))+list(Student.objects.filter(class8=subject_id))
+    dic={'student_list':student_list,'subject_id':subject_id}
+    return render(request, 'markStudentAttendance.html',dic)
 
 def Studentdashboard(request):
     return render(request, 'Studentdashboard.html')
