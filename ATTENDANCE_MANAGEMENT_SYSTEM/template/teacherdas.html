@@ -4,9 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/admindashboard.css">
     <style>
+        aside ul a{
+            line-height:70px;
+            font-size:22px;
+        }
+        aside{
+            height:100vh;
+            margin-top:60px;
+            padding-top:20px;
+        }
+        .content-container{
+            margin-top:60px;
+            padding-top:20px;
+        }
+        .card
+        {
+            width:300px;
+        }
+        .dashboard-container
+        {
+            justify-content:space-between;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family:'Times New Roman', Times, serif;
         }
 
         form {
@@ -41,20 +65,76 @@
             color: white;
             border-radius: 4px;
         }
+        #attendanceTable
+        {
+            margin:auto;
+            margin-top:30px;
+        }
+        #attendanceForm{
+            display: flex;
+            justify-content: center;
+
+        }
+        .date
+        {
+            padding-left: 20px;
+            padding-right: 5px;
+        }
+        #attendanceForm button{
+            margin-left: 25px;
+        }
+    
     </style>
 </head>
+</head>
 <body>
+    
+    <header class="mainheader">
+        <h1><i class="fas fa-university"></i>Attendance Management System</h1>
+        <h2>Welcome Professor</h2>
+        <a href="" class=""btn>LogOut</a>
+    </header>
 
-    <h1>COURSE NAME</h1>
+    <aside>
+        <header>
+            <a href="teacherdashboard.html">
+                <i class="fas fa-bars"></i>Dashboard
+            </a>
+        </header>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard"></i>Manage Classes</h4></li>
+            <ul>
+                <li><a href=""><i class="fa fa-link"></i>View all</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><h4><i class="fas fa-chalkboard-teacher"></i>Manage Attendance</h4></li>
+            <ul>
+                <li><a href=""><i class="fa fa-pencil"></i>Take attendance</a></li>
+                <li><a href=""><i class="fa fa-link"></i>View Attendance</a></li>
+            </ul>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="content-container">
+
+   </head>
+<body>
+    <main>
+    <div class="login-container">
+   
+
+    <h3>COURSE NAME</h3>
 
     <form id="attendanceForm">
-        <label for="fromDate">From Date:</label>
-        <input type="date" id="fromDate" name="fromDate">
+        <label for="fromDate" class="date">From Date:</label>
+        <input type="date" id="fromDate" name="fromDate" class="date">
 
-        <label for="toDate">To Date:</label>
-        <input type="date" id="toDate" name="toDate">
+        <label for="toDate" class="date">To Date:</label>
+        <input type="date" id="toDate" name="toDate" class="date">
 
-        <button type="button" onclick="generateTable()">Generate Table</button>
+        <button type="button" onclick="generateTable()" class="date">Generate Table</button>
     </form>
 
     <table id="attendanceTable">
@@ -121,6 +201,7 @@
             row.cells[2].innerHTML = entry.status;
         }
     </script>
-
+    </div>
+    </main>
 </body>
 </html>
