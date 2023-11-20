@@ -86,6 +86,11 @@ def addnewstudent(request):
 
 
 def AdminDashboard(request):
+    user=request.user.username
+    if 'S1' in user:
+        return redirect('/Studentdashboard')
+    elif 'T1' in user:
+        return redirect('/teacherdashboard')
     num_student=len(Student.objects.all())
     num_teacher=len(Teacher.objects.all())
     num_class=len(Subject.objects.all())
