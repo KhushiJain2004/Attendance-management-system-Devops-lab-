@@ -27,7 +27,7 @@ def StudentLogin(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-        print('hi')
+        # print('hi')
 
         if user is not None:
             login(request, user)
@@ -292,10 +292,104 @@ def logoutuser(request):
     return redirect('/')
 
 def attendancesummary(request):
-    attendance_data = [
-    ]
+    student_id = request.user.username
+    student=Student.objects.filter(student_id=student_id)[0]
 
-    return render(request, 'attendancesummary.html', {'attendance_data': attendance_data})
+    student_name=student.student_name
+    class_list=[]
+    if student.class1!='':
+        a=[student.class1]
+        att_str=student.class1_att
+        if att_str.count('P')==0 and att_str.count('A')==0:
+            att='NA'
+        else:
+            att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+        class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+        a.append(att)
+        a.append(class_name)
+        class_list.append(a)
+        if student.class2!='':
+            a=[student.class2]
+            att_str=student.class2_att
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            class_name=Subject.objects.filter(subject_id=student.class2)[0].subject_name
+            a.append(att)
+            a.append(class_name)
+            class_list.append(a)
+            if student.class3!='':
+                a=[student.class3]
+                att_str=student.class3_att
+                if att_str.count('P')==0 and att_str.count('A')==0:
+                    att='NA'
+                else:
+                    att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                a.append(att)
+                a.append(class_name)
+                class_list.append(a)
+                if student.class4!='':
+                    a=[student.class4]
+                    att_str=student.class4_att
+                    if att_str.count('P')==0 and att_str.count('A')==0:
+                        att='NA'
+                    else:
+                        att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                    class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                    a.append(att)
+                    a.append(class_name)
+                    class_list.append(a)
+                    if student.class5!='':
+                        a=[student.class5]
+                        att_str=student.class5_att
+                        if att_str.count('P')==0 and att_str.count('A')==0:
+                            att='NA'
+                        else:
+                            att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                        class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                        a.append(att)
+                        a.append(class_name)
+                        class_list.append(a)
+                        if student.class6!='':
+                            a=[student.class6]
+                            att_str=student.class6_att
+                            if att_str.count('P')==0 and att_str.count('A')==0:
+                                att='NA'
+                            else:
+                                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                            class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                            a.append(att)
+                            a.append(class_name)
+                            class_list.append(a)
+                            if student.class7!='':
+                                a=[student.class7]
+                                att_str=student.class7_att
+                                if att_str.count('P')==0 and att_str.count('A')==0:
+                                    att='NA'
+                                else:
+                                    att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                                class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                                a.append(att)
+                                a.append(class_name)
+                                class_list.append(a)
+                                if student.class8!='':
+                                    a=[student.class8]
+                                    att_str=student.class8_att
+                                    if att_str.count('P')==0 and att_str.count('A')==0:
+                                        att='NA'
+                                    else:
+                                        att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                                    class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                                    a.append(att)
+                                    a.append(class_name)
+                                    class_list.append(a)
+
+
+
+    dic={'student_name':student_name,'student_id':student_id,'class_list':class_list}
+    return render(request, 'attendancesummary.html', dic)
 
 def markStudentAttendance(request):
     if request.method == 'POST':
@@ -342,7 +436,104 @@ def markStudentAttendance(request):
     return render(request, 'markStudentAttendance.html',dic)
 
 def Studentdashboard(request):
-    return render(request, 'Studentdashboard.html')
+    student_id = request.user.username
+    student=Student.objects.filter(student_id=student_id)[0]
+
+    student_name=student.student_name
+    class_list=[]
+    if student.class1!='':
+        a=[student.class1]
+        att_str=student.class1_att
+        if att_str.count('P')==0 and att_str.count('A')==0:
+            att='NA'
+        else:
+            att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+        class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+        a.append(att)
+        a.append(class_name)
+        class_list.append(a)
+        if student.class2!='':
+            a=[student.class2]
+            att_str=student.class2_att
+            if att_str.count('P')==0 and att_str.count('A')==0:
+                att='NA'
+            else:
+                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+            class_name=Subject.objects.filter(subject_id=student.class2)[0].subject_name
+            a.append(att)
+            a.append(class_name)
+            class_list.append(a)
+            if student.class3!='':
+                a=[student.class3]
+                att_str=student.class3_att
+                if att_str.count('P')==0 and att_str.count('A')==0:
+                    att='NA'
+                else:
+                    att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                a.append(att)
+                a.append(class_name)
+                class_list.append(a)
+                if student.class4!='':
+                    a=[student.class4]
+                    att_str=student.class4_att
+                    if att_str.count('P')==0 and att_str.count('A')==0:
+                        att='NA'
+                    else:
+                        att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                    class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                    a.append(att)
+                    a.append(class_name)
+                    class_list.append(a)
+                    if student.class5!='':
+                        a=[student.class5]
+                        att_str=student.class5_att
+                        if att_str.count('P')==0 and att_str.count('A')==0:
+                            att='NA'
+                        else:
+                            att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                        class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                        a.append(att)
+                        a.append(class_name)
+                        class_list.append(a)
+                        if student.class6!='':
+                            a=[student.class6]
+                            att_str=student.class6_att
+                            if att_str.count('P')==0 and att_str.count('A')==0:
+                                att='NA'
+                            else:
+                                att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                            class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                            a.append(att)
+                            a.append(class_name)
+                            class_list.append(a)
+                            if student.class7!='':
+                                a=[student.class7]
+                                att_str=student.class7_att
+                                if att_str.count('P')==0 and att_str.count('A')==0:
+                                    att='NA'
+                                else:
+                                    att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                                class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                                a.append(att)
+                                a.append(class_name)
+                                class_list.append(a)
+                                if student.class8!='':
+                                    a=[student.class8]
+                                    att_str=student.class8_att
+                                    if att_str.count('P')==0 and att_str.count('A')==0:
+                                        att='NA'
+                                    else:
+                                        att=att_str.count('P')/(att_str.count('P')+att_str.count('A'))*100
+                                    class_name=Subject.objects.filter(subject_id=student.class1)[0].subject_name
+                                    a.append(att)
+                                    a.append(class_name)
+                                    class_list.append(a)
+
+
+
+    dic={'student_name':student_name,'student_id':student_id,'class_list':class_list}
+    return render(request, 'Studentdashboard.html',dic)
 
 def studentprofile(request):
     if request.method == 'POST':
