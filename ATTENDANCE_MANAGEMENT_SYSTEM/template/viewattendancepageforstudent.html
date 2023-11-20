@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/admindashboard.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admindashboard.css' %}">
 
     <!-- Add your CSS styles here -->
     <style>
@@ -58,7 +59,7 @@
     <header class="mainheader">
         <h1><i class="fas fa-university"></i>Attendance Management System</h1>
         <h2>Welcome Student</h2>
-        <a href="" class="btn">LogOut</a>
+        <a href="/logoutuser" class="btn">LogOut</a>
     </header>
 
     <aside>
@@ -68,9 +69,9 @@
             </a>
         </header>
         <ul>
-            <li><a href="Studentdashboard.html"><i class="fa fa-home"></i>Home</a></li>
-            <li><a href=""><i class="fa fa-user"></i>My Profile</a></li>
-            <li><a href=""><i class="fa fa-link"></i>View Attendance</a></li>
+            <li><a href="/Studentdashboard"><i class="fa fa-home"></i>Home</a></li>
+            <!-- <li><a href=""><i class="fa fa-user"></i>My Profile</a></li> -->
+            <li><a href="/attendancesummary"><i class="fa fa-link"></i>View Attendance</a></li>
         </ul>
     </aside>
 
@@ -79,7 +80,7 @@
             <h3>Attendance Summary</h3>
 
             <!-- Input field for Course Name -->
-            <div class="course-name">
+            <!-- <div class="course-name">
                 <label for="courseName" >Course Name:</label>
                 <input type="text" id="courseName" name="courseName" placeholder="Enter course name">
             </div>
@@ -92,7 +93,7 @@
                 <input type="date" id="dateTo" name="dateTo">
 
                 <button onclick="updateDetails()">Update</button>
-            </div>
+            </div> -->
 
             <table>
                 <thead>
@@ -103,14 +104,16 @@
                 </thead>
                 <tbody>
                     <!-- Replace the content of the table with actual attendance data -->
+                    {% for q in date_att_list %}
                     <tr>
-                        <td>2023-01-01</td>
-                        <td>Present</td>
+                        <td>{{ q.0 }}</td>
+                        <td>{{ q.1 }}</td>
                     </tr>
-                    <tr>
+                    {% endfor %}
+                    <!-- <tr>
                         <td>2023-01-02</td>
                         <td>Absent</td>
-                    </tr>
+                    </tr> -->
                     <!-- Add more rows as needed -->
                 </tbody>
             </table>
