@@ -86,6 +86,11 @@ def addnewstudent(request):
 
 
 def AdminDashboard(request):
+    user=request.user.username
+    if 'S1' in user:
+        return redirect('/Studentdashboard')
+    elif 'T1' in user:
+        return redirect('/teacherdashboard')
     num_student=len(Student.objects.all())
     num_teacher=len(Teacher.objects.all())
     num_class=len(Subject.objects.all())
@@ -661,7 +666,46 @@ def teacherdashboard(request):
     return render(request, 'teacherdashboard.html',dic)
 
 def viewattendancepageforstudent(request):
-    return render(request, 'viewattendancepageforstudent.html')
+    subject_id=request.GET.get('subject_id')
+    student_id = request.user.username
+    sub=Subject.objects.filter(subject_id=subject_id)[0]
+    date=sub.class_info.split(',')
+    if len(date)!=0:
+        date.pop(0)
+
+    i=Student.objects.filter(student_id=student_id)[0]
+    if i.class1==subject_id:
+            att_str=i.class1_att
+            att_list=list(att_str)
+    elif i.class2==subject_id:
+            att_str=i.class2_att
+            att_list=list(att_str)
+    elif i.class3==subject_id:
+            att_str=i.class3_att
+            att_list=list(att_str)
+    elif i.class4==subject_id:
+            att_str=i.class4_att
+            att_list=list(att_str)
+    elif i.class5==subject_id:
+            att_str=i.class5_att
+            att_list=list(att_str)
+    elif i.class6==subject_id:
+            att_str=i.class6_att
+            att_list=list(att_str)
+    elif i.class7==subject_id:
+            att_str=i.class7_att
+            att_list=list(att_str)
+    elif i.class8==subject_id:
+            att_str=i.class8_att
+            att_list=list(att_str)
+    date_att_list=[]
+    for i in range(len(att_list)):
+        z=[date[i],att_list[i]]
+        date_att_list.append(z)
+
+    dic={'date_att_list':date_att_list}
+    print(date_att_list)
+    return render(request, 'viewattendancepageforstudent.html',dic)
 
 def coursename(request):
     return render(request, 'coursename.html')

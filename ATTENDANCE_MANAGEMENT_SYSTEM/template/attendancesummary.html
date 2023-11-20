@@ -83,19 +83,19 @@
         <header class="mainheader">
             <h1><i class="fas fa-university"></i>Attendance Management System</h1>
             <h2>Welcome Student</h2>
-            <a href="logoutuser" class=""btn>LogOut</a>
+            <a href="/logoutuser" class="btn">LogOut</a>
         </header>
     
         <aside>
             <header>
-                <a >
+                <a>
                     <i class="fas fa-bars"></i>Dashboard
-                </div>
+                </a>
             </header>
             <ul>
-                <li><a href="Studentdashboard"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href=""><i class="fa fa-user"></i>My Profile</a></li>
-                <li><a href="attendancesummary"><i class="fa fa-link"></i>View Attendance</a></li>
+                <li><a href="/Studentdashboard"><i class="fa fa-home"></i>Home</a></li>
+                <!-- <li><a href=""><i class="fa fa-user"></i>My Profile</a></li> -->
+                <li><a href="/attendancesummary"><i class="fa fa-link"></i>View Attendance</a></li>
             </ul>
         </aside>
         <main>
@@ -111,7 +111,7 @@
                         <!-- <th>Classes Attended</th>
                         <th>Total Classes</th> -->
                         <th>Attendance Percentage</th>
-                        <th>Status</th>
+                        <th>View Detailed Attendance</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -121,7 +121,7 @@
                         <td>{{ q.0 }}</td>
                         <td>{{ q.2 }}</td>
                         <td>{{ q.1 }}</td>
-                        <td></td>
+                        <td><a href="/viewattendancepageforstudent/?subject_id={{ q.0 }}">View Detailed attendance</a></td>
                     </tr>
                     {% endfor %}
                     <!-- Add more rows as needed -->
