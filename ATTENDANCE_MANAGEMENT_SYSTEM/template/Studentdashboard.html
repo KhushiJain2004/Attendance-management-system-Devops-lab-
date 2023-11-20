@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="static/css/admindashboard.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admindashboard.css' %}">
     <style>
         aside ul a{
             padding-left:20px;
@@ -59,7 +60,7 @@
     <header class="mainheader">
         <h1><i class="fas fa-university"></i>Attendance Management System</h1>
         <h2>Welcome Student</h2>
-        <a href="" class=""btn>LogOut</a>
+        <a href="logoutuser" class=""btn>LogOut</a>
     </header>
 
     <aside>
@@ -69,9 +70,9 @@
             </div>
         </header>
         <ul>
-            <li><a href="Studentdashboard.html"><i class="fa fa-home"></i>Home</a></li>
+            <li><a href="Studentdashboard"><i class="fa fa-home"></i>Home</a></li>
             <li><a href=""><i class="fa fa-user"></i>My Profile</a></li>
-            <li><a href=""><i class="fa fa-link"></i>View Attendance</a></li>
+            <li><a href="attendancesummary"><i class="fa fa-link"></i>View Attendance</a></li>
         </ul>
     </aside>
 
@@ -80,10 +81,11 @@
             <h3>Student Portal</h3>
             <h4>My courses</h4>
             <div class="dashboard-container">
+                {% for q in class_list %}
                 <div class="card purple">
                     <div class="icon "><i class="fa fa-book-open"></i></div>
-                    <h3>Course</h3></div>
-                <div class="card pink">
+                    <h3>{{ q.2 }} : {{ q.1 }}</h3></div>
+                <!-- <div class="card pink">
                     <div class="icon "><i class="fa fa-book-open"></i></div>
                     <h3>Course</h3></div>
                 <div class="card blue">
@@ -103,7 +105,8 @@
                     <h3>Course</h3></div>
                 <div class="card purple">
                     <div class="icon "><i class="fa fa-book-open"></i></div>
-                    <h3>Course</h3></div>
+                    <h3>Course</h3></div> -->
+                    {% endfor %}
                 </div>
             </div>
         </div>

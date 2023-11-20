@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <title>Attendance Summary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/admindashboard.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admindashboard.css' %}">
     <!-- Add your CSS styles here -->
     <style>
         body {
@@ -82,7 +83,7 @@
         <header class="mainheader">
             <h1><i class="fas fa-university"></i>Attendance Management System</h1>
             <h2>Welcome Student</h2>
-            <a href="" class=""btn>LogOut</a>
+            <a href="logoutuser" class=""btn>LogOut</a>
         </header>
     
         <aside>
@@ -92,9 +93,9 @@
                 </div>
             </header>
             <ul>
-                <li><a href="Studentdashboard.html"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="Studentdashboard"><i class="fa fa-home"></i>Home</a></li>
                 <li><a href=""><i class="fa fa-user"></i>My Profile</a></li>
-                <li><a href=""><i class="fa fa-link"></i>View Attendance</a></li>
+                <li><a href="attendancesummary"><i class="fa fa-link"></i>View Attendance</a></li>
             </ul>
         </aside>
         <main>
@@ -105,29 +106,24 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Course ID</th>
                         <th>Course Name</th>
-                        <th>Classes Attended</th>
-                        <th>Total Classes</th>
+                        <!-- <th>Classes Attended</th>
+                        <th>Total Classes</th> -->
                         <th>Attendance Percentage</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Replace the content of the table with actual attendance summary data -->
-                    <tr class="low-attendance">
-                        <td>Course Name1</td>
-                        <td>20</td>
-                        <td>30</td>
-                        <td>66.67%</td>
-                        <td>Low</td>
+                    {% for q in class_list %}
+                    <tr>
+                        <td>{{ q.0 }}</td>
+                        <td>{{ q.2 }}</td>
+                        <td>{{ q.1 }}</td>
+                        <td></td>
                     </tr>
-                    <tr class="high-attendance">
-                        <td>Course Name2</td>
-                        <td>25</td>
-                        <td>30</td>
-                        <td>83.33%</td>
-                        <td>High</td>
-                    </tr>
+                    {% endfor %}
                     <!-- Add more rows as needed -->
                 </tbody>
             </table>
