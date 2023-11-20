@@ -12,7 +12,7 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             margin: 0;
             padding: 0;
         }
@@ -59,7 +59,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header class="mainheader">
         <h1><i class="fas fa-university"></i>Attendance Management System</h1>
         <h2>Welcome Admin</h2>
         <a href="/logoutuser" class="btn">LogOut</a>
@@ -67,9 +67,9 @@
 
     <aside>
         <header>
-            <div>
+            <a href="AdminDashboard">
                 <i class="fas fa-bars"></i>Dashboard
-            </div>
+            </a>
         </header>
         <ul>
             <li><h4><i class="fas fa-chalkboard"></i>Manage Classes</h4></li>
@@ -105,7 +105,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Class</th>
+                        <!-- <th>Class</th> -->
                         <th>Edit</th>
                     </tr>
                 </thead>
@@ -115,7 +115,7 @@
 							<td>{{q.student_id}}</td>
 							<td>{{q.student_name}}</td>
 							<td>{{q.email_id}}</td>
-                            <td>None</td>
+                            <!-- <td>None</td> -->
 							<td><a href="/student_mgmt/?student_id={{ q.student_id }}">Edit</a></td>
 						  </tr>
 						  {% endfor %}
