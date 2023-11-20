@@ -111,7 +111,7 @@
                         <!-- <th>Classes Attended</th>
                         <th>Total Classes</th> -->
                         <th>Attendance Percentage</th>
-                        <th>Status</th>
+                        <th>View Detailed Attendance</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -121,7 +121,7 @@
                         <td>{{ q.0 }}</td>
                         <td>{{ q.2 }}</td>
                         <td>{{ q.1 }}</td>
-                        <td></td>
+                        <td><a href="/viewattendancepageforstudent/?subject_id={{ q.0 }}">View Detailed attendance</a></td>
                     </tr>
                     {% endfor %}
                     <!-- Add more rows as needed -->
