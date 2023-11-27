@@ -113,19 +113,19 @@
             <form method="post" action="/addnewstudent">
                 {% csrf_token %}
             <label for="courseName">Student name:</label>
-            <input type="text" id="student" name="student_name">
+            <input type="text" id="student" name="student_name" required>
         </div>
 
         <div>
             <h2>Email Id: </h2>
             <label for="teacherName"> Enter Email Id:</label>
-            <input type="email" id="email" name="emailid">
+            <input type="email" id="email" name="emailid" required>
         </div>
 
         <div>
             <h2>Password</h2>
             <label for="capacity">Enter password:</label>
-            <input type="alphanumeric" id="password" name="password">
+            <input type="alphanumeric" id="password" name="password" required>
         </div>
 
         <div><button class="add-button" type="submit">Add</button></div>
