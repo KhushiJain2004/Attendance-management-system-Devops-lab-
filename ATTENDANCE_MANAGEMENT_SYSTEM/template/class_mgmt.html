@@ -7,7 +7,7 @@
     <title>Admin Page</title>
     <link rel="stylesheet" href="{% static 'css/class_mgmt.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'css/admindashboard.css'%}">
+    <link rel="stylesheet" href="{% static 'css/admindashboard.css' %}">
 
 </head>
 <body>
@@ -20,7 +20,7 @@
 
     <aside>
         <header>
-            <a href="AdminDashboard.html">
+            <a href="/AdminDashboard">
                 <i class="fas fa-bars"></i>Dashboard
             </a>
         </header>
@@ -47,7 +47,17 @@
         </ul>
     </aside>
     <div class="content-container">
-    {
+        {% if messages %}
+				  {% for message in messages %}
+				  <div>
+					{{ message }}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				  </div>
+				  {% endfor %}
+				  {% endif %}
+    
             <header class="pageheader">
                 <h1>Class ID : {{ class_id}}</h1>
                 <h1>Class Name : {{ class_name}}</h1>
@@ -74,20 +84,20 @@
                         <th>Student ID</th>
                         <th>Student Name</th>
                         <th>Student Attendance</th>
-                        <!-- <th>Remove</th> -->
+                        <th>Remove</th>
                     </tr>
                     {% for q in student_list %}
                                   <tr>
-                                    <td>{{q.student_id}}</td>
-                                    <td>{{q.student_name}}</td>
-                                    <td>{{q.student_attendance}}</td>
-                                    <!-- <td><a href="/remove/?subject_id={{ q.subject_id }}">Edit</a></td> -->
+                                    <td>{{ q.id }}</td>
+                                    <td>{{ q.name }}</td>
+                                    <td>{{ q.att }}</td>
+                                    <td><a href="/remove/?remove={{ class_id }}{{ q.id }}">Remove</a></td>
                                   </tr>
                                   {% endfor %}
                     
                 </table>
             </main>
-        }
+        
 
     </div>
 </body>
