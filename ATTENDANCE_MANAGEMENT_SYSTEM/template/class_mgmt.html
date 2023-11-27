@@ -84,6 +84,7 @@
                         <th>Student ID</th>
                         <th>Student Name</th>
                         <th>Student Attendance</th>
+                        <th>Edit Attendance</th>
                         <th>Remove</th>
                     </tr>
                     {% for q in student_list %}
@@ -91,6 +92,7 @@
                                     <td>{{ q.id }}</td>
                                     <td>{{ q.name }}</td>
                                     <td>{{ q.att }}</td>
+                                    <td><a href="/editattendanceforadmin/?details={{ class_id }}{{ q.id }}">View Detailed Attendance</a></td>
                                     <td><a href="/remove/?remove={{ class_id }}{{ q.id }}">Remove</a></td>
                                   </tr>
                                   {% endfor %}
