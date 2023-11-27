@@ -246,7 +246,7 @@ def courseadd(request):
             subject_id='C10000'
         else:
             prev_subject_id=list(Subject.objects.all())[-1].subject_id
-            subject_id='S'+str(int(prev_subject_id[1:])+1)
+            subject_id='C'+str(int(prev_subject_id[1:])+1)
         subject_name=request.POST.get('courseName')
         teacher_id=request.POST.get('teacherid')
         subject=Subject(subject_id=subject_id,subject_name=subject_name,teacher_id=teacher_id,classes_held=0,number_of_students=0)
@@ -945,4 +945,91 @@ def editattendance(request):
 
     return render(request, 'editattendance.html',dic)
     
-    
+def editattendanceforadmin(request):
+    if request.method == 'POST':
+        details=request.GET.get('details')
+        subject_id=details[0:6]
+        student_id=details[6:]
+        sub=Subject.objects.filter(subject_id=subject_id)[0]
+        date=sub.class_info.split(',')
+        if len(date)!=0:
+            date.pop(0)
+
+        att=''
+        for j in range(len(date)):
+            value=request.POST.get(str(j))
+            print(value)
+            att+=value
+        
+        i=Student.objects.filter(student_id=student_id)[0]
+            
+        if i.class1==subject_id:
+            i.class1_att=att
+            i.save()
+        elif i.class2==subject_id:
+            i.class2_att=att
+            i.save()
+        elif i.class3==subject_id:
+            i.class3_att=att
+            i.save()
+        elif i.class4==subject_id:
+            i.class4_att=att
+            i.save()
+        elif i.class5==subject_id:
+            i.class5_att=att
+            i.save()
+        elif i.class6==subject_id:
+            i.class6_att=att
+            i.save()
+        elif i.class7==subject_id:
+            i.class7_att=att
+            i.save()
+        elif i.class8==subject_id:
+            i.class8_att=att
+            i.save()
+
+        return redirect(f'/class_mgmt/?subject_id={subject_id}')
+
+    details=request.GET.get('details')
+    subject_id=details[0:6]
+    student_id=details[6:]
+
+    sub=Subject.objects.filter(subject_id=subject_id)[0]
+    date=sub.class_info.split(',')
+    if len(date)!=0:
+        date.pop(0)
+
+    i=Student.objects.filter(student_id=student_id)[0]
+    if i.class1==subject_id:
+            att_str=i.class1_att
+            att_list=list(att_str)
+    elif i.class2==subject_id:
+            att_str=i.class2_att
+            att_list=list(att_str)
+    elif i.class3==subject_id:
+            att_str=i.class3_att
+            att_list=list(att_str)
+    elif i.class4==subject_id:
+            att_str=i.class4_att
+            att_list=list(att_str)
+    elif i.class5==subject_id:
+            att_str=i.class5_att
+            att_list=list(att_str)
+    elif i.class6==subject_id:
+            att_str=i.class6_att
+            att_list=list(att_str)
+    elif i.class7==subject_id:
+            att_str=i.class7_att
+            att_list=list(att_str)
+    elif i.class8==subject_id:
+            att_str=i.class8_att
+            att_list=list(att_str)
+    date_att_list=[]
+    for i in range(len(att_list)):
+        z=[date[i],att_list[i],str(i)]
+        date_att_list.append(z)
+
+    dic={'date_att_list':date_att_list,'student_id':student_id , 'subject_id':subject_id}
+    print(date_att_list)
+
+    return render(request, 'editattendanceforadmin.html',dic) 

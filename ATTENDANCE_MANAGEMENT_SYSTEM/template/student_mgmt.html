@@ -58,7 +58,7 @@
 
     <aside>
         <header>
-            <a href="AdminDashboard.html">
+            <a href="/AdminDashboard">
                 <i class="fas fa-bars"></i>Dashboard
             </a>
         </header>
@@ -108,7 +108,7 @@
             <tr>
                 <td>{{ q.0 }}</td>
                 <td>{{ q.1 }}%</td>
-                <td><a href="detailed_attendance_oops.html">View Detailed Attendance</a></td>
+                <td><a href="/editattendanceforadmin/?details={{ q.0 }}{{ student_id }}">View Detailed Attendance</a></td>
             </tr>
             {% endfor %}
             <!-- Add more subjects and attendance percentages as needed -->
