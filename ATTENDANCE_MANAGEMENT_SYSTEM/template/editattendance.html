@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/admindashboard.css' %}">
     <style>
         aside ul a{
-            line-height:70px;
+            line-height:45px;
             font-size:22px;
         }
         aside{
@@ -22,6 +22,10 @@
         .content-container{
             margin-top:60px;
             padding-top:20px;
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;;
         }
         .card
         {
@@ -42,17 +46,32 @@
         table {
             width: 80%;
             border-collapse: collapse;
-            margin: 20px;
+            margin: auto;
+        }
+        button{
+            margin:30px;
+            padding:10px;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            background-color: #007bff;
+            border:none;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        
         }
 
         table, th, td {
             border: 1px solid #ddd;
             padding: 10px;
-            text-align: left;
+            text-align: center;
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: rgb(26, 26, 26);
+            color:white
         }
 
         h1 {
@@ -121,6 +140,7 @@
     <main>
         <div class="content-container">
             <h3>Faculty Portal</h3>
+            <table>
             <thead>
                 <form method="post" action="/editattendance/?details={{ subject_id }}{{ student_id }}">
                     {% csrf_token %}

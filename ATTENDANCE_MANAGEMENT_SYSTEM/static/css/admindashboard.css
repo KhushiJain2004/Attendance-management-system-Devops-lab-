@@ -23,6 +23,7 @@ aside{
     background: #000d33;
     float:left;
     padding-top:20px;
+    position:fixed;
 }
 aside header a{
     margin:0;
